@@ -135,6 +135,14 @@ motivated them.
 projects ALWAYS arrive translated to English and anonymized — identity out,
 lesson and numbers in. Nobody commits evidence containing private project
 names, personal paths, account identifiers, deployment URLs, or people's
-names. "Validated in a real project run on this system (5 agent
+names.
+
+**History rule (learned the hard way)**: publishing an existing repo means
+publishing its FULL git history, not just the final tree. Anonymizing the
+files without auditing the history is a slow-motion leak — every
+pre-anonymization version stays browsable commit by commit. Before making
+any repo public: audit the history for private references, and if they
+exist, squash to a clean initial commit (keeping the real history in a
+local-only branch). "Validated in a real project run on this system (5 agent
 interruptions, zero lost work)" is the right shape; the project's name is
 not part of the lesson.
