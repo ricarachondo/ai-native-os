@@ -131,14 +131,23 @@ the kit.
   (identity out, lesson and numbers in), committed and pushed. While there,
   note in the report if the kit has updates this project has not evaluated
   yet (note only — adoption happens at the next sprint start).
-- **Downstream (at sprint START, mandatory)**: together with the LEARNINGS
-  read, pull the kit and review its commits since the last sprint. Adoption
-  is SELECTIVE (portable/contextual distinction), never blind; changes that
-  alter hard rules require the user's ok.
-- **Regular session start: do NOT check** — the session-start protocol
-  stays minimal (token-efficiency rule); only the session that starts a
-  sprint syncs. Adopting process changes mid-sprint creates inconsistent
-  behavior within the same sprint.
+- **Downstream (marker-based, checked at EVERY orchestrator session
+  start)**: the project keeps a one-line living marker in this section —
+  `kit-sync: {{LAST_ADOPTED_SHA}} ({{DATE}})` — updated in the same edit as
+  each adoption. At session start, run `git ls-remote <kit-remote> main`
+  (one command, free when nothing changed) and compare with the marker.
+  Equal → done, zero extra work. Different → pull and review ONLY the
+  `marker..HEAD` commits.
+- **Adoption by TYPE of change**, not all alike:
+  - **Learnings/traps** (informational, error-preventing): adopt
+    IMMEDIATELY, in any session — waiting for the sprint boundary wastes
+    the improvement exactly when it helps.
+  - **Process rule/structure changes**: defer to the next sprint boundary
+    (half a sprint under one rule and half under another = inconsistency),
+    EXCEPT hard rules born from an incident (damage-preventing → adopt
+    now, with a note to the user).
+  - Adoption is always SELECTIVE (portable/contextual distinction); changes
+    that alter the project's own hard rules require the user's ok.
 
 ### Automatic triggers for new infrastructure
 
