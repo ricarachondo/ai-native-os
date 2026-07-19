@@ -76,21 +76,35 @@ format changed is pure waste. Sources for the business notes: migrations
 and their comments, the decision log, issue history, and the code that
 reads/writes each column.
 
-## Do we need a data-architect role? (evaluated — not yet)
+## The Data Architect role (2 modes)
 
-The kit's standing principle applies (*memory before agent*, PRINCIPLES.md
-#13): the format above is executable by the existing roles — the SWE writes
-the doc updates as part of the change, the PM verifies them, and data-
-architecture DECISIONS (new table vs column, inheritance patterns,
-denormalization) already have an owner: they surface in grooming and the
-user approves them like any architecture question. A permanent specialist
-role would add a handoff without adding authority.
+Generic template in `../../agents/data-architect.md`, mirroring the
+Designer's two modes:
 
-**Trigger to create the role** (standard counters mechanism): if in one
-sprint 3+ issues require non-trivial data-architecture decisions (new
-tables, remodeling, migration strategy debates), or the schema-doc rule is
-caught stale twice in acceptance review, create a `data-architect` agent:
-audit mode (review the model against the docs and the real query patterns)
-+ spec mode (propose the data model for a new feature BEFORE grooming,
-mirroring the Designer's two modes). Until a counter crosses, the rule +
-format is the whole system.
+1. **Audit mode** (existing model): reviews the REAL model (migrations,
+   policies, indexes) against `docs/database/` and against the code's
+   actual query patterns. Triaged findings (Must fix / Should fix / Could
+   improve / What works well): doc drift, missing constraints for business
+   invariants, unused or missing indexes, security-coverage gaps.
+2. **Spec mode** (new features, BEFORE the PM's grooming): data grill-me
+   (entities and lifecycle, real cardinalities, query patterns, who
+   sees/touches what, volume) → proposal in
+   `docs/database/proposals/<feature>.md` with the same business-notes
+   format as the table docs, plus migration strategy and discarded
+   alternatives. The PM grooms consuming the proposal; the SWE implements;
+   the proposal folds into the canonical docs after the merge.
+
+**Scope guard (keeps the handoff honest)**: the role is dispatched only for
+NON-trivial data decisions — new tables, remodeling, inheritance patterns,
+backfill strategies, policy changes. Trivial changes (a simple nullable
+column, an obvious index) stay with the SWE, who updates the docs directly
+under the hard rule; dispatching a specialist there adds a handoff without
+adding authority.
+
+**History note**: the kit's original recommendation was rule-only with a
+trigger to create the role later (*memory before agent*, PRINCIPLES.md
+#13: 3+ non-trivial data issues in one sprint, or docs caught stale twice
+in review). The user who validated this module chose to create the role
+immediately; the anti-empty-handoff concern survives as the scope guard
+above. A project that prefers the lean variant can adopt the rule + format
+without the role and keep the trigger.

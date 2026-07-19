@@ -172,6 +172,7 @@ requires the user's ok).
 | Tester | `.claude/agents/tester.md` | Verifies everything independently |
 | On-Call | `.claude/agents/oncall-engineer.md` | Real deploy post-push |
 | Designer | `.claude/agents/designer.md` | Two modes: triaged audit of existing UI + spec of new surfaces (grill-me → brief → IA) before grooming. See the full module in the kit's `templates/design/README.md` (fixed-system/genesis fork, design pod) |
+| Data Architect | `.claude/agents/data-architect.md` | Two modes, mirroring the Designer: triaged audit of the real data model vs `docs/database/` vs actual query patterns + spec of the data model for new features (data grill-me → proposal) before grooming. Only for NON-trivial data decisions — trivial schema changes stay with the SWE. Full module: the kit's `templates/docs/database/README.md` |
 
 ## Model and effort assignment — EVOLVING CHAPTER
 
