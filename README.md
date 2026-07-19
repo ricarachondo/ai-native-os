@@ -5,6 +5,9 @@ Distilled from a real production project run end-to-end on this system
 agent roles, loops, rules and triggers, packaged so that starting a NEW
 project on any topic is nearly plug-and-play. The documents are
 transversal: they serve any project and any user — they name no people.
+Throughout the kit, **"the user"** means the person who owns and runs the
+project and interacts with it (approves, redirects, unblocks); it is a
+role, never an individual.
 
 ## Pillar: the AI-native company
 
@@ -135,7 +138,9 @@ motivated them.
 projects ALWAYS arrive translated to English and anonymized — identity out,
 lesson and numbers in. Nobody commits evidence containing private project
 names, personal paths, account identifiers, deployment URLs, or people's
-names.
+names. When a person must be referenced, they are always "the user" (the
+role that owns and interacts with the project) — never a name, in content
+or in commit messages.
 
 **History rule (learned the hard way)**: publishing an existing repo means
 publishing its FULL git history, not just the final tree. Anonymizing the
