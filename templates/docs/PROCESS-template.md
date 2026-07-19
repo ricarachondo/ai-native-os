@@ -201,6 +201,19 @@ with no pattern to copy — a dispatch pattern, not a permanent structure
 (trigger to formalize: 3+ pods in one sprint). Full module: the kit's
 `templates/design/README.md`.
 
+## Database documentation
+
+Living, business-language docs of the data model in `docs/database/`: one
+file per table (what it is, relationships, columns with business notes,
+keys, indexes with their reason) + `relationships.md` + `schema.md` +
+`architecture.md`. **Hard rule**: every issue that touches the schema,
+relationships, security model (RLS/policies), storage, or data
+infrastructure updates these docs in the same cycle — the SWE writes the
+update, the PM verifies it in acceptance review as part of the Definition
+of Done. A schema change with stale docs is rejected like a feature with
+no tests. Full module (format, bootstrap for existing schemas, and the
+data-architect role trigger): the kit's `templates/docs/database/README.md`.
+
 ## Token efficiency (effort, task budgets, advisory)
 
 See the kit's `GUARDRAILS.md` § "The first lever is effort" for the full
