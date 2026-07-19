@@ -125,6 +125,21 @@ learnings → `docs/LEARNINGS.md` (append-only); durable decisions →
 `docs/DECISIONS.md` (one line); project-agnostic learnings → proposal to
 the kit.
 
+**Kit sync (two directions, fixed cadence)**:
+- **Upstream (at Sprint Close, mandatory)**: project-agnostic learnings are
+  promoted to the kit IN the same close — translated to English, anonymized
+  (identity out, lesson and numbers in), committed and pushed. While there,
+  note in the report if the kit has updates this project has not evaluated
+  yet (note only — adoption happens at the next sprint start).
+- **Downstream (at sprint START, mandatory)**: together with the LEARNINGS
+  read, pull the kit and review its commits since the last sprint. Adoption
+  is SELECTIVE (portable/contextual distinction), never blind; changes that
+  alter hard rules require the user's ok.
+- **Regular session start: do NOT check** — the session-start protocol
+  stays minimal (token-efficiency rule); only the session that starts a
+  sprint syncs. Adopting process changes mid-sprint creates inconsistent
+  behavior within the same sprint.
+
 ### Automatic triggers for new infrastructure
 
 **Meta-rule**: every new rule/infra is defined with an objective counter +
