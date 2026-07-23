@@ -49,6 +49,18 @@ confirmation rubric.
    documented skill violates it unknowingly (in the source project, the
    banned `accent` token appeared in production before the rule was
    codified).
+9. **Security grill-me** (3 sub-questions, 5 minutes, they become hard
+   rules): (a) what data will the project hold that must NOT be public —
+   personal data (emails, names, locations of people), business-sensitive
+   data? (b) who are the actors — end user, admin/owner, system processes,
+   and the malicious external? (c) the **"never list"**: 3-5 plain
+   sentences of what an external must never be able to do ("read another
+   user's data", "modify our own records", "enumerate private drafts").
+   Answers land in `docs/security/THREAT-MODEL.md` and each never-list
+   sentence becomes a hard rule in the project's PROCESS.md. See
+   `templates/security/README.md`. **Why this is asked now**: security
+   retrofitted at the first auth issue is reactive by construction — the
+   classification must exist BEFORE the first table with user data does.
 
 ## Phase 1 — Permissions (ask for ALL of them here, at once)
 

@@ -54,7 +54,7 @@ mapping of where each one already runs, in each project's
 | `PRINCIPLES.md` | The distilled principles, with the real incident that originated each one and whether it is portable or context-specific | Both |
 | `SPRINTS.md` | Detailed sprint methodology: planning, execution, close, retrospective, and the label taxonomy | Both |
 | `GUARDRAILS.md` | Precautions against limits: session/context, spend, and the triggers/counters mechanism | Both |
-| `templates/` | Skeletons ready to copy and fill in: AGENTS.md, MEMORY.md, PROCESS.md, LEARNINGS.md, DECISIONS.md, 8 agent roles, design module, database-documentation module, launch-readiness module | The session |
+| `templates/` | Skeletons ready to copy and fill in: AGENTS.md, MEMORY.md, PROCESS.md, LEARNINGS.md, DECISIONS.md, 8 agent roles, design module, database-documentation module, launch-readiness module, security module, delivery-quality module | The session |
 
 ## Improvement loop (this repo learns too)
 
@@ -126,6 +126,15 @@ company ideas (see § Pillar).
   launch-readiness module (`templates/launch/README.md`); its 7 sections
   and 3-priority scheme are his, the processing-reliability section and
   the role/ownership mapping are this kit's.
+- Security/quality tooling reviewed for the security and delivery-quality
+  modules (2026-07): Anthropic's `security-guidance` plugin and
+  `claude-code-security-review`; [trailofbits/skills](https://github.com/trailofbits/skills)
+  (CC BY-SA 4.0 — `differential-review` and `insecure-defaults` informed
+  checklist items, with attribution); PostHog's `security-audit` skill
+  ("confirm exploitability" discipline);
+  [mattpocock/skills](https://github.com/mattpocock/skills) (MIT —
+  `diagnosing-bugs` informed the bug template); GRC control packs
+  (Scytale and community ISO/SOC2 collections) as control-list references.
 - Anthropic official documentation referenced throughout:
   the [effort parameter](https://platform.claude.com/docs/en/build-with-claude/effort),
   the [advisor tool](https://platform.claude.com/docs/en/agents-and-tools/tool-use/advisor-tool),

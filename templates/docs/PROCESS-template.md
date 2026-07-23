@@ -43,7 +43,9 @@ Orchestrator files → PM groom → SWE builds → Tester verifies → PM accept
    user action (publish/save/send) specifies its feedback on 3 axes:
    severity (success/info/warning/error) × duration (transient vs
    persistent) × channel (toast/inline/banner/invisible-monitoring-only) —
-   it is not left implicit nor discovered in production.**
+   it is not left implicit nor discovered in production.** Mandatory
+   field: "touches auth / sensitive data / public surface?" — yes →
+   `security` label at birth (see § Security).
 3. The SWE implements in an isolated worktree + tests. Issues >~3 files or
    with schema: sub-steps + `.tmp/progress-{issue}.md` kept updated. Does
    NOT commit.
@@ -112,6 +114,14 @@ the kit's `SPRINTS.md` § Retrospective):
 1. **Balance** — what we accomplished, what not, why (distinguish a
    correctly discovered scope boundary from a real failure).
 2. **Carry-over** — still a priority? correct slicing? interruptions?
+   Every carry-over item gets the `carry-over` label with its origin
+   sprint, and the pinned **Carry-over ledger** issue is updated (item ·
+   age · interest · latest decision + reason). At the NEXT sprint's
+   planning the PM decides take/postpone per item using **age × interest
+   (does it touch fast-changing code?) × user impact × effort** — decision
+   and reason recorded and reported, never silent. Floor: postponing an
+   item with age ≥3 sprints or severity S1/S2 requires the user's explicit
+   ok. Full module: the kit's `templates/quality/README.md`.
 3. **Processes** — bottlenecks; is the DoD still realistic?
 4. **Commitments** — concrete, measurable actions, not intentions.
 5. **Cost and efficiency** — real tokens/duration table per agent; most
@@ -216,6 +226,39 @@ update, the PM verifies it in acceptance review as part of the Definition
 of Done. A schema change with stale docs is rejected like a feature with
 no tests. Full module (format, bootstrap for existing schemas, and the
 data-architect role trigger): the kit's `templates/docs/database/README.md`.
+
+## Security (proactive, not reactive)
+
+Full module: the kit's `templates/security/README.md`. Operational summary:
+- **Bootstrap**: security grill-me → `docs/security/THREAT-MODEL.md`
+  (sensitive data, actors, never list); each never-list sentence is a hard
+  rule here from day one.
+- **Grooming**: mandatory PM field "touches auth / sensitive data / public
+  surface?" — yes → `security` label at birth → Security Engineer gate is
+  automatic.
+- **Living docs with hard sync rules**: `PII-INVENTORY.md` (new personal
+  datum → same-cycle update; privacy policy generates FROM it) and
+  `CONTROLS.md` (certification-readiness map: control → practice →
+  evidence).
+- **Tooling**: `security-guidance` plugin + `/security-review` complement
+  the role gate, never replace it. Third-party security skills are
+  reviewed before installing.
+
+## Delivery quality (bugs, changes, carry-over)
+
+Full module: the kit's `templates/quality/README.md`. Operational summary:
+- **Bugs** use the fixed template (tracker issue form): pre-filing
+  verification (duplicate search with the query as evidence, regression
+  check, data-or-code, affected flows) and mandatory close fields — root
+  cause, fix commit, **the regression test** (no bug closes without one).
+  Severity S1-S4 by real user impact.
+- **Every merge** passes the change checklist
+  (`templates/quality/CHANGE-CHECKLIST.md`): deprecation with grep
+  evidence + removal plan, migration rollback/backfill/verification,
+  breaking changes with consumers updated, env vars in all environments,
+  docs sync, diagnosability. "n/a" is declared, never assumed.
+- **Carry-over**: see § Sprint end — age, PM decision framework, floor
+  rule, pinned ledger.
 
 ## Launch readiness (gate ritual)
 
