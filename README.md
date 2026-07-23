@@ -54,7 +54,7 @@ mapping of where each one already runs, in each project's
 | `PRINCIPLES.md` | The distilled principles, with the real incident that originated each one and whether it is portable or context-specific | Both |
 | `SPRINTS.md` | Detailed sprint methodology: planning, execution, close, retrospective, and the label taxonomy | Both |
 | `GUARDRAILS.md` | Precautions against limits: session/context, spend, and the triggers/counters mechanism | Both |
-| `templates/` | Skeletons ready to copy and fill in: AGENTS.md, MEMORY.md, PROCESS.md, LEARNINGS.md, DECISIONS.md, 6 agent roles, design module, database-documentation module | The session |
+| `templates/` | Skeletons ready to copy and fill in: AGENTS.md, MEMORY.md, PROCESS.md, LEARNINGS.md, DECISIONS.md, 7 agent roles, design module, database-documentation module, launch-readiness module | The session |
 
 ## Improvement loop (this repo learns too)
 
@@ -121,6 +121,11 @@ company ideas (see § Pillar).
   (MIT) — catalog of 67 complete design systems in SKILL.md+DESIGN.md
   format, installable via `npx typeui.sh pull <name>`. Evaluated and
   adapted as a source for the design module.
+- ["The 37 Pre-Launch Checks"](https://nicoburkart.notion.site/e6e88fff5ddf48a09248e2c8368445d1)
+  by Nico Burkart — reviewed in full and adapted as the base of the
+  launch-readiness module (`templates/launch/README.md`); its 7 sections
+  and 3-priority scheme are his, the processing-reliability section and
+  the role/ownership mapping are this kit's.
 - Anthropic official documentation referenced throughout:
   the [effort parameter](https://platform.claude.com/docs/en/build-with-claude/effort),
   the [advisor tool](https://platform.claude.com/docs/en/agents-and-tools/tool-use/advisor-tool),

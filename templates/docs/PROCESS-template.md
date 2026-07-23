@@ -173,6 +173,7 @@ requires the user's ok).
 | On-Call | `.claude/agents/oncall-engineer.md` | Real deploy post-push |
 | Designer | `.claude/agents/designer.md` | Two modes: triaged audit of existing UI + spec of new surfaces (grill-me → brief → IA) before grooming. See the full module in the kit's `templates/design/README.md` (fixed-system/genesis fork, design pod) |
 | Data Architect | `.claude/agents/data-architect.md` | Two modes, mirroring the Designer: triaged audit of the real data model vs `docs/database/` vs actual query patterns + spec of the data model for new features (data grill-me → proposal) before grooming. Only for NON-trivial data decisions — trivial schema changes stay with the SWE. Full module: the kit's `templates/docs/database/README.md` |
+| Platform Engineer | `.claude/agents/platform-engineer.md` | Two modes: standing reliability audit of the backend platform (timeouts, rate limits, background jobs, retries/idempotency, observability, email/DNS infra) + launch gate (executes its sections of the launch-readiness checklist). Audit/spec only — findings become issues the SWE builds. Full module: the kit's `templates/launch/README.md` |
 
 ## Model and effort assignment — EVOLVING CHAPTER
 
@@ -214,6 +215,20 @@ update, the PM verifies it in acceptance review as part of the Definition
 of Done. A schema change with stale docs is rejected like a feature with
 no tests. Full module (format, bootstrap for existing schemas, and the
 data-architect role trigger): the kit's `templates/docs/database/README.md`.
+
+## Launch readiness (gate ritual)
+
+Before ANY public launch (first launch, or a major surface going public
+later): the orchestrator runs the launch-readiness checklist as a batch —
+each section dispatched to its owning role (Security → security role or
+Platform Engineer · Email/Findability/Speed-infra/Analytics/Processing
+reliability → Platform Engineer · Speed-UX → Designer/SWE · Legal →
+prepared for the USER's explicit approval · Final test → Tester, on the
+live surface). Results land in `docs/launch/READINESS.md` (status +
+evidence + date per check). 🔴 blockers must pass to launch; 🟡 first-week
+failures are filed as issues AT THAT MOMENT; later launches re-run the
+delta. Full checklist and ownership map: the kit's
+`templates/launch/README.md`.
 
 ## Token efficiency (effort, task budgets, advisory)
 
