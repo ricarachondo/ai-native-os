@@ -71,11 +71,14 @@ Decision history of the kit itself: this repo's `git log`.
 
 Honesty rule: this kit distinguishes THREE evidence states, and labels
 them: (1) **validated** — practices proven in real projects: the body of
-the kit. (2) **Specified, pending first validation** — patterns documented
-in full whose only missing piece is a real run (e.g. the quality module's
-optimization loop): usable TODAY by anyone who needs them — the marker is
-epistemic honesty, not a gate; the first real use IS the validation
-(report the outcome and the marker drops). (3) **Future territory** — NOT
+the kit. (2) **Specified, pending first-party validation** — patterns documented
+in full whose only missing piece is a real run in OUR projects: usable
+TODAY by anyone who needs them — the marker is epistemic honesty, not a
+gate; the first real use IS the validation (report the outcome and the
+marker drops). When external evidence exists (the pattern is reported
+working by a credible source), the marker says so with the citation —
+"externally evidenced, first-party validation pending" is a stronger
+state than "specified only", and both are usable. (3) **Future territory** — NOT
 specified, and building them prematurely has real cost: do not adopt by
 default; each has its adoption trigger under the counters meta-rule
 (`GUARDRAILS.md` § Triggers):
@@ -106,6 +109,26 @@ per stage.
 
 When any of these gets validated with data in a real project, it is
 promoted from future territory into the body of the kit — never before.
+
+### Validation ledger (evidence state per piece — kept honest here)
+
+| Piece | State |
+|---|---|
+| Core cycle, PM/SWE/Tester/On-Call roles, memory files, sprint rituals, kit-sync protocol | ✅ Validated (2+ real sprints) |
+| Database-docs module | ✅ Validated (full real schema documented) |
+| Security Engineer gates | ✅ Validated (real sensitive issues gated) |
+| Designer — audit mode | ✅ Validated (real audits shipped fixes) |
+| Designer — spec mode | ✅ Validated (real briefs consumed by grooming) |
+| **Design pod** | ⏳ Specified, first-party validation pending — activation was never gated on it |
+| **Genesis mode** (design catalog flow) | ⏳ Specified, pending — every real project so far had a fixed system |
+| Data Architect role | ⏳ Specified (2026-07), first dispatch pending |
+| Platform Engineer role / launch gate ritual | ⏳ Specified (2026-07), first launch pending |
+| Security module docs (threat model, PII, controls) | ⏳ Instantiated in a real project; first full cycle under the new rules pending |
+| Bug template / change checklist / carry-over ledger | ⏳ Instantiated; first real sprint under them pending |
+| **Optimization loop** | ⏳ Externally evidenced (Anthropic's effective-harnesses engineering post reports the pattern working), first-party validation pending |
+
+⏳ never means blocked — it means "when you run it, you are the evidence:
+report back and the row flips".
 
 ## Origin
 

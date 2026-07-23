@@ -16,7 +16,9 @@
   system skill) and all design agents obey it. Aesthetic philosophies and
   token generators are NOT used — the identity is already decided. (This
   was the source project's case.)
-- **NO → genesis mode**: the full creation flow is run (§ Flow), including
+- **NO → genesis mode** (specified, first-party validation pending — every
+  real project so far had a fixed system; usable today): the full creation
+  flow is run (§ Flow), including
   choosing an aesthetic direction from the catalog (§ Catalog) and token
   generation. When finished, the project switches to fixed-system mode
   forever — the system is created once, then obeyed.
@@ -57,6 +59,9 @@ feature from different angles (e.g. radical mobile-first / desktop density
 design system, and produces THE final brief with a "Synthesis decisions"
 section (what it took from which variant and why).
 
+- **Validation status**: specified, first-party validation pending (see
+  kit README § Validation ledger) — usable today; the cues above (size M+,
+  no pattern to copy) are its activation triggers, no user prompt needed.
 - The pod is a **dispatch pattern**, not a permanent structure — the agent
   economy makes parallel exploration cheap, but two roles deciding the same
   thing produce contradictory specs; that is why the synthesis has ONE

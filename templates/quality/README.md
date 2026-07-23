@@ -108,8 +108,21 @@ Failed experiments are findings, not noise — they stay in the log.
 The log lives on the issue (queryable forever); the final report includes
 the baseline→result delta and the reverted paths.
 
-**Validation status**: fully specified 2026-07; not yet run in a real
-project. This does NOT gate its use — the pattern is activated by needing
+**When to activate (cues — no user prompt needed)**: any role can PROPOSE
+this pattern when it recognizes the shape; the user approves like any
+issue. The cues: (a) grooming reveals an issue whose goal IS a scalar
+metric ("make X faster/cheaper/smaller") — the PM proposes the loop
+instead of a vague "optimize" spec; (b) a Platform Engineer audit or the
+launch checklist produces a measurable finding (score, latency, cost)
+above target; (c) a retro/counter shows recurring cost or performance
+complaints on the same surface. Every dispatch pattern in this kit
+declares its cues — patterns that only activate when the user remembers
+them don't compound.
+
+**Validation status**: externally evidenced — the pattern is reported
+working in Anthropic's effective-harnesses engineering post (see kit
+README § Credits); first-party validation pending. This does NOT gate its
+use — the pattern is activated by needing
 it, and the first real run is its validation: report the outcome (via the
 improvement loop, or a Contributing issue if you are an external adopter)
 and this marker drops. See the kit README § honesty rule for the
