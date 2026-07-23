@@ -76,6 +76,19 @@ format changed is pure waste. Sources for the business notes: migrations
 and their comments, the decision log, issue history, and the code that
 reads/writes each column.
 
+## API contract documentation (conditional — from the FIRST external endpoint)
+
+The moment the project exposes an API consumed by anyone outside its own
+codebase (external developers, partners, a mobile client, a public
+integration), the contract gets the same treatment as the schema:
+`docs/api/CONTRACT.md` (or OpenAPI spec) documenting endpoints, auth
+model, request/response schemas and error shapes — started with the FIRST
+external endpoint, not retrofitted later, and updated under the same
+hard rule (same issue cycle that changes the surface; the reviewer
+verifies it). Internal-only APIs (a frontend talking to its own routes)
+don't require it — the condition is external consumption, and reaching
+that condition without the doc is a finding.
+
 ## The Data Architect role (2 modes)
 
 Generic template in `../../agents/data-architect.md`, mirroring the

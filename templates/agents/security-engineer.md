@@ -44,6 +44,10 @@ with project context, it does not replace it.
   expensive calls are exposed.
 - **Capability tokens / secret headers**: unpredictable, constant-time
   compared, rotatable, never logged.
+- **Web-layer protections**: CORS policy explicit (never wildcard on
+  authenticated endpoints); security headers set (CSP/HSTS or the
+  framework's hardened defaults); CSRF protection wherever session
+  cookies exist (token-based APIs document why it does not apply).
 - **Third-party tokens**: least privilege, correct storage, blast radius
   if leaked, rotation path.
 - **State transitions that change visibility** (draft→published,

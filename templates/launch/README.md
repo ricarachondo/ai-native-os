@@ -39,6 +39,7 @@ provider" instead of a brand, "DB row security" for any backend.
 | No secret keys in the client bundle | 🔴 | View-source search for `sk-`/`sk_live`; audit every `NEXT_PUBLIC_`/`VITE_`/`PUBLIC_` env var. Public-by-design keys (payment publishable key, DB anon key) are fine; server secrets never. |
 | HTTPS forced on all 4 URL variants (http/https × www/bare) | 🟡 | All must land on the same https page; certificate grade A on ssllabs.com/ssltest. Hosts handle the cert, often NOT the www redirect. |
 | Rate-limit expensive endpoints (LLM calls, email sends, paid APIs) | 🟡 | Per user AND per IP. An open AI endpoint is someone else spending your API budget overnight. |
+| CORS policy, security headers, CSRF where cookies exist | 🟡 | CORS never wildcard on authenticated endpoints; headers via the framework's hardened defaults or equivalent; CSRF documented n/a for pure token APIs. |
 
 ### 2 · Email deliverability
 
@@ -114,6 +115,18 @@ class of failure where the app is up but its WORK dies quietly:
 | Retries are bounded AND idempotent | 🟡 | A retried job that double-writes is worse than a failed one. Idempotency keys or upserts on every retryable write. |
 | Failure visibility: a dead job is SEEN | 🟡 | Dead-letter state + error tracking on background work, not only on user-facing routes. A silent failed queue is data loss on a delay. |
 | Known platform limits written down | 🟡 | Request timeout, body size, connection pool, function memory — in `docs/database/architecture.md` § operational constraints or equivalent. You can't design around limits nobody wrote down. |
+
+### CI/CD (conditional chapter — adopt when the cues fire)
+
+This system's default flow (local merges + independent Tester + oncall
+verifying the real deploy) already provides the guarantees CI gives human
+teams — so CI/CD is NOT mandatory at bootstrap. Register it, adopt it when
+any cue fires: multiple contributors or sessions merging concurrently ·
+external users depending on release stability · a regression reaching a
+deploy that the Tester flow should have caught (counter: 2 → adopt) ·
+compliance/certification requiring automated pipeline evidence. Minimum
+adoption: automated test run + migration apply on push to each
+environment branch. Owner: Platform Engineer proposes, the user approves.
 
 ## Ownership (who runs what)
 

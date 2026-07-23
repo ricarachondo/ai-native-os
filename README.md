@@ -65,6 +65,14 @@ everything learned in the previous ones. Context-specific learnings
 (hardware, stack, APIs) stay in their project's LEARNINGS.md, marked as
 non-portable.
 
+**Two-question rule (every evaluation, always)**: any practice/pattern/
+tool under consideration answers TWO questions SEPARATELY — (1) does the
+source project need it now? (a project decision; "no" or "later" is
+fine); (2) does the KIT need it documented? Default YES with activation
+conditions whenever the practice is sound: the kit serves ANY project,
+so "our current project doesn't need it" is grounds for a CONDITIONAL
+entry (cues + evidence state), never for omission.
+
 Decision history of the kit itself: this repo's `git log`.
 
 ## Future territory — NOT yet validated
@@ -126,6 +134,8 @@ promoted from future territory into the body of the kit — never before.
 | Security module docs (threat model, PII, controls) | ⏳ Instantiated in a real project; first full cycle under the new rules pending |
 | Bug template / change checklist / carry-over ledger | ⏳ Instantiated; first real sprint under them pending |
 | **Optimization loop** | ⏳ Externally evidenced (Anthropic's effective-harnesses engineering post reports the pattern working), first-party validation pending |
+| CI/CD chapter (conditional) | ⏳ Specified with adoption cues; first-party adoption pending (a source project schedules it for a later phase) |
+| API-contract docs (conditional) | ⏳ Specified; no source project has external API consumers yet |
 
 ⏳ never means blocked — it means "when you run it, you are the evidence:
 report back and the row flips".

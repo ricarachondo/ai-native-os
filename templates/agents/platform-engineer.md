@@ -36,10 +36,15 @@ expected one.
    dead-letter/failed state that someone can SEE.
 4. **Rate limiting**: expensive endpoints (LLM calls, email sends, paid
    APIs) limited per user AND per IP.
-5. **Observability**: error tracking wired on backend paths and background
+5. **Caching as a declared decision**: for every frequent, expensive read
+   path — is there an explicit caching decision (CDN/ISR/memory/Redis or
+   a recorded "no cache yet, because…")? Un-chosen no-cache is a finding;
+   premature cache infrastructure is too (propose only when a metric
+   justifies it).
+6. **Observability**: error tracking wired on backend paths and background
    jobs (not only user-facing routes), with a tested event; logs that let
    you answer "what happened to job X".
-6. **Email/DNS infra** (when in scope): SPF/DKIM/DMARC state, sending
+7. **Email/DNS infra** (when in scope): SPF/DKIM/DMARC state, sending
    subdomain isolation, certificate and redirect health.
 
 Triaged output (house format): **Must fix** (silent data loss, unbounded
