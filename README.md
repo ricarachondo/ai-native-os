@@ -54,7 +54,7 @@ mapping of where each one already runs, in each project's
 | `PRINCIPLES.md` | The distilled principles, with the real incident that originated each one and whether it is portable or context-specific | Both |
 | `SPRINTS.md` | Detailed sprint methodology: planning, execution, close, retrospective, and the label taxonomy | Both |
 | `GUARDRAILS.md` | Precautions against limits: session/context, spend, and the triggers/counters mechanism | Both |
-| `templates/` | Skeletons ready to copy and fill in: AGENTS.md, MEMORY.md, PROCESS.md, LEARNINGS.md, DECISIONS.md, 7 agent roles, design module, database-documentation module, launch-readiness module | The session |
+| `templates/` | Skeletons ready to copy and fill in: AGENTS.md, MEMORY.md, PROCESS.md, LEARNINGS.md, DECISIONS.md, 8 agent roles, design module, database-documentation module, launch-readiness module | The session |
 
 ## Improvement loop (this repo learns too)
 

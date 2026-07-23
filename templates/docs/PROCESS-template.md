@@ -174,6 +174,7 @@ requires the user's ok).
 | Designer | `.claude/agents/designer.md` | Two modes: triaged audit of existing UI + spec of new surfaces (grill-me → brief → IA) before grooming. See the full module in the kit's `templates/design/README.md` (fixed-system/genesis fork, design pod) |
 | Data Architect | `.claude/agents/data-architect.md` | Two modes, mirroring the Designer: triaged audit of the real data model vs `docs/database/` vs actual query patterns + spec of the data model for new features (data grill-me → proposal) before grooming. Only for NON-trivial data decisions — trivial schema changes stay with the SWE. Full module: the kit's `templates/docs/database/README.md` |
 | Platform Engineer | `.claude/agents/platform-engineer.md` | Two modes: standing reliability audit of the backend platform (timeouts, rate limits, background jobs, retries/idempotency, observability, email/DNS infra) + launch gate (executes its sections of the launch-readiness checklist). Audit/spec only — findings become issues the SWE builds. Full module: the kit's `templates/launch/README.md` |
+| Security Engineer | `.claude/agents/security-engineer.md` | Gate on sensitive issues (auth/secrets/row-security/tokens/PII) and pre-promotions, plus on-demand audits. Fixed core checklist (secrets, server-side authz, IDOR, input validation, state-transition visibility) + the project's own frozen extension. Evidence-backed findings only — does not implement |
 
 ## Model and effort assignment — EVOLVING CHAPTER
 

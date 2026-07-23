@@ -69,7 +69,7 @@ Explicitly list what you are going to do and ask for the ok a single time:
    - `templates/docs/PROCESS-template.md` → `docs/PROCESS.md`
    - `templates/docs/LEARNINGS-template.md` → `docs/LEARNINGS.md`
    - `templates/docs/DECISIONS-template.md` → `docs/DECISIONS.md`
-   - `templates/agents/*.md` → `.claude/agents/` (7 roles)
+   - `templates/agents/*.md` → `.claude/agents/` (8 roles)
    - Create `docs/retros/` and `docs/workflows/README.md` (process index)
 2. GitHub: private repo, environment branch if applicable (e.g. `uat`),
    labels per the full taxonomy in `SPRINTS.md` § Labels (type, priority,
