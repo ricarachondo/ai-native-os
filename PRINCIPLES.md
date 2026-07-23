@@ -130,7 +130,24 @@ principles that govern it.)
       from day 1 (principle 20).
 20. **[PORTABLE] Record tokens/duration per agent from day 1** (the Task
     notifications already carry it — you just have to write it down).
-    Without data, every efficiency discussion is theater.
+    Without data, every efficiency discussion is theater. And judge the
+    SYSTEM on numbers that can't argue back — outcomes (money landed,
+    users retained, tests that ran), not agent activity.
+
+## Dispatch patterns and role creation
+
+24. **[PORTABLE] The Stop Rule before every parallel dispatch**: ask
+    "where does the work split?" — no nameable independent pieces → it's
+    a chain, use a single agent. The general parallel pattern is the
+    diamond (split → parallel explore → evaluate → merge with one
+    synthesis owner); pod/research/parallel-issues are its instances.
+    Detail: `templates/quality/README.md` § 5.
+25. **[PORTABLE] Every new role/pod/workflow is born under the birth
+    contract** (`templates/agents/README.md`): it inherits the
+    transversal rules by REFERENCE (reads PROCESS.md and the applicable
+    modules), declares its cues and boundaries, and its creation passes
+    the change checklist. Transversal rules live in ONE place — a rule
+    copied into N role files is a drift bug, not thoroughness.
 
 ## Interaction with the user
 

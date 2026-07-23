@@ -30,6 +30,12 @@ the value is that n/a is DECLARED, never assumed.
 - [ ] Personal data touched → `docs/security/PII-INVENTORY.md` updated
 - [ ] Security practice touched → `docs/security/CONTROLS.md` updated
 
+**New roles / pods / workflows**
+- [ ] None created — OR the birth contract is satisfied
+      (`templates/agents/README.md`): sections present, transversal rules
+      referenced not copied, registered in roles table + validation
+      ledger, cues declared
+
 **Diagnosability**
 - [ ] If this change fails in production, the signals to see it exist:
       {log line / error tracking / metric — or why none is needed}

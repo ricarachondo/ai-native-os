@@ -62,6 +62,9 @@ section (what it took from which variant and why).
 - **Validation status**: specified, first-party validation pending (see
   kit README § Validation ledger) — usable today; the cues above (size M+,
   no pattern to copy) are its activation triggers, no user prompt needed.
+- The pod is an INSTANCE of the kit's general **diamond dispatch**
+  pattern (`templates/quality/README.md` § 5) — its rules (Stop Rule,
+  one synthesis owner, evaluate before merge) apply here automatically.
 - The pod is a **dispatch pattern**, not a permanent structure — the agent
   economy makes parallel exploration cheap, but two roles deciding the same
   thing produce contradictory specs; that is why the synthesis has ONE

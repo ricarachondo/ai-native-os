@@ -136,6 +136,8 @@ promoted from future territory into the body of the kit — never before.
 | **Optimization loop** | ⏳ Externally evidenced (Anthropic's effective-harnesses engineering post reports the pattern working), first-party validation pending |
 | CI/CD chapter (conditional) | ⏳ Specified with adoption cues; first-party adoption pending (a source project schedules it for a later phase) |
 | API-contract docs (conditional) | ⏳ Specified; no source project has external API consumers yet |
+| Diamond dispatch (general pattern) | Instances: parallel independent issues ✅ validated · design pod and research fan-outs ⏳ pending first formal run |
+| Birth contract (role/pod/workflow creation) | ⏳ Specified; applies to the next role created |
 
 ⏳ never means blocked — it means "when you run it, you are the evidence:
 report back and the row flips".
@@ -174,6 +176,11 @@ company ideas (see § Pillar).
   [mattpocock/skills](https://github.com/mattpocock/skills) (MIT —
   `diagnosing-bugs` informed the bug template); GRC control packs
   (Scytale and community ISO/SOC2 collections) as control-list references.
+- A public "Graph Engineering" explainer by techwith.ram (Instagram
+  carousel, 2026-07) — reviewed against this system; most concepts were
+  already institutionalized here, and its Stop Rule ("where does the work
+  split?") plus the generalized diamond shape were adopted with credit
+  (`templates/quality/README.md` § 5, PRINCIPLES.md #24).
 - Anthropic official documentation referenced throughout:
   the [effort parameter](https://platform.claude.com/docs/en/build-with-claude/effort),
   the [advisor tool](https://platform.claude.com/docs/en/agents-and-tools/tool-use/advisor-tool),

@@ -128,6 +128,35 @@ improvement loop, or a Contributing issue if you are an external adopter)
 and this marker drops. See the kit README § honesty rule for the
 distinction between this status and "future territory".
 
+## 5 · Diamond dispatch (the general parallel pattern)
+
+Split → explore in parallel → evaluate → merge with ONE synthesis owner.
+This is the kit's single general pattern for parallel agent work; the
+design pod, parallel independent issues, and multi-angle research
+fan-outs are all INSTANCES of it — don't invent a new parallel structure
+when the diamond already fits.
+
+- **Activation cue (the Stop Rule — ask it before every parallel
+  dispatch)**: *"Where does the work split?"* If you can't name
+  independent pieces, it's a chain, not a graph — use a single agent.
+  More agents on unsplit work is cost and failure points, not leverage.
+- **The merge has one owner**: parallel explorers never decide — a
+  designated synthesizer-judge compares against the brief/criteria and
+  produces THE result with a "synthesis decisions" section (what came
+  from which branch and why). Two owners of the same decision produce
+  contradictory specs.
+- **Evaluate before merge**: quality/fact-check filters run on each
+  branch BEFORE synthesis (the house verify-don't-trust rule applied to
+  parallel work).
+- Relation to the optimization **loop** (§ 4): the diamond is the
+  STRUCTURE of one dispatch (how work splits and rejoins); the loop is
+  the DYNAMICS across iterations (repeat until a stop criterion). They
+  compose: a loop's each iteration may be a diamond.
+
+**Validation status**: parallel independent issues ✅ validated; the
+design pod instance and research fan-outs ⏳ pending first formal run
+(see the kit README § Validation ledger).
+
 ## Files
 
 - `BUG-template.md` — the bug issue template (install as
