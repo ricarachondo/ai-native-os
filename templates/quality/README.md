@@ -76,6 +76,45 @@ that interest visible and puts the decision on the record:
   from a phone in two taps, no queries. The Sprint Close ritual already
   reports carry-over; the ledger is its persistent, always-current view.
 
+## 4 · Optimization loop (dispatch pattern — specified, pending first validation)
+
+For problems with an **objective scalar metric** (memory, p95 latency,
+bundle size, cost, the agents' own token spend) — never for feature work.
+The shape: *"reduce {metric} of {target}; up to {N} experiments; keep a
+log; verify under {realistic conditions}"*.
+
+**Preconditions (the loop is worthless without them):**
+1. The metric is measurable automatically and reliably, and a **baseline**
+   is recorded before experiment 1 — otherwise N experiments produce N
+   opinions.
+2. The verification harness exists (e.g. a reproducible load test). The
+   harness is the real investment; the loop is the easy part.
+3. **QA gate intact**: no experiment "wins" if it breaks tests —
+   correctness traded for performance is debt in disguise.
+
+**Dispatch** (orchestrator → Platform Engineer defines metric + baseline +
+harness + success criterion; SWE runs the loop):
+
+```
+Goal: reduce {metric} of {target} from {baseline} to {target value}.
+Budget: up to {N} experiments. Log every experiment to the issue as:
+  #k · hypothesis → change → measurement → conclusion (kept/reverted)
+Stop when: target reached · budget exhausted · 5 consecutive experiments
+without improvement (diminishing returns — stop and report).
+Verify each kept change under {realistic conditions}. Tests stay green.
+Failed experiments are findings, not noise — they stay in the log.
+```
+
+The log lives on the issue (queryable forever); the final report includes
+the baseline→result delta and the reverted paths.
+
+**Validation status**: fully specified 2026-07; not yet run in a real
+project. This does NOT gate its use — the pattern is activated by needing
+it, and the first real run is its validation: report the outcome (via the
+improvement loop, or a Contributing issue if you are an external adopter)
+and this marker drops. See the kit README § honesty rule for the
+distinction between this status and "future territory".
+
 ## Files
 
 - `BUG-template.md` — the bug issue template (install as

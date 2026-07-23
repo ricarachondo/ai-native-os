@@ -69,10 +69,16 @@ Decision history of the kit itself: this repo's `git log`.
 
 ## Future territory — NOT yet validated
 
-Honesty rule: this kit only documents practices **validated in real
-projects**. The following topics were discussed but have NOT been tried —
-do not adopt them by default; each has its adoption trigger under the
-counters meta-rule (`GUARDRAILS.md` § Triggers):
+Honesty rule: this kit distinguishes THREE evidence states, and labels
+them: (1) **validated** — practices proven in real projects: the body of
+the kit. (2) **Specified, pending first validation** — patterns documented
+in full whose only missing piece is a real run (e.g. the quality module's
+optimization loop): usable TODAY by anyone who needs them — the marker is
+epistemic honesty, not a gate; the first real use IS the validation
+(report the outcome and the marker drops). (3) **Future territory** — NOT
+specified, and building them prematurely has real cost: do not adopt by
+default; each has its adoption trigger under the counters meta-rule
+(`GUARDRAILS.md` § Triggers):
 
 - **Watchdog / automatic flow reactivation**: an external process that
   detects session interruptions nobody picks up and relaunches. Trigger
