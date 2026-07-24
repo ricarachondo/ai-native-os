@@ -157,6 +157,33 @@ when the diamond already fits.
 design pod instance and research fan-outs ⏳ pending first formal run
 (see the kit README § Validation ledger).
 
+## 6 · Audit playbook (the backward-looking review discipline)
+
+`AUDIT-PLAYBOOK.md` is the reusable checklist for reviewing a project
+"hacia atrás" — finding the gaps that feature work never looked at, in the
+assumptions nobody questioned. It is the accumulated audit knowledge of a
+real project run, made project-agnostic:
+
+- **12 audit dimensions** (Part A): security · test coverage · robustness ·
+  performance · accessibility · UX friction · states & feedback ·
+  onboarding · animations · mobile interaction (bottom sheets) · logs/
+  events/observability · notifications mapping — each a "look for X"
+  checklist distilled from real findings.
+- **Backward review** (Part B): a regression pass that confirms
+  previously-closed findings are still fixed AND still test-covered (a fix
+  without a regression test is a finding waiting to recur), and that the
+  "rules for future work" from prior audits are actually being followed.
+- **Output contract & cadence** (Part C): every sweep produces a dated
+  audit doc + tracked issues (tagged fix-now vs decision) + a focused owner
+  notification. Security and coverage run every Sprint Close; UX dimensions
+  on a periodic sweep and at each new surface's build time.
+
+The founding discipline: **objective correctness (robustness, a11y
+semantics, perf) is fix-now; aesthetics / mechanism-choice / paid-infra is
+the owner's decision** — propose, don't impose. And **verify before you
+assert** — a finding isn't real until the full data path (including the
+caller) has been read.
+
 ## Files
 
 - `BUG-template.md` — the bug issue template (install as
@@ -164,6 +191,9 @@ design pod instance and research fan-outs ⏳ pending first formal run
   tracker).
 - `CHANGE-CHECKLIST.md` — the full merge checklist (reference from the
   project's PROCESS.md § mandatory steps).
+- `AUDIT-PLAYBOOK.md` — the reusable audit checklist (12 dimensions +
+  backward-review pass); run as a periodic sweep and for the
+  Sprint-Close security/coverage rituals.
 
 ## Sources (reviewed 2026-07, mined with attribution)
 
