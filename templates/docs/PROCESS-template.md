@@ -129,6 +129,11 @@ the kit's `SPRINTS.md` § Retrospective):
    handoff**; which interaction pattern with the user worked or generated
    friction.
 
+**Audit rituals at every close** (playbook `templates/quality/AUDIT-PLAYBOOK.md`):
+the Security Engineer runs dimension A1 and the Tester dimension A2 as
+part of the close; the FULL 12-dimension sweep + backward review runs when
+the product is functionally complete, before the launch gate.
+
 The orchestrator ALWAYS relays the full report to the user in the
 conversation. Narrative → `docs/retros/YYYY-MM-DD-sprint-N.md`; real
 learnings → `docs/LEARNINGS.md` (append-only); durable decisions →

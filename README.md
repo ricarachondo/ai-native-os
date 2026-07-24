@@ -146,6 +146,7 @@ promoted from future territory into the body of the kit — never before.
 | Birth contract (role/pod/workflow creation) | ⏳ Specified; applies to the next role created |
 | Stack-defaults chapter | ⏳ Specified from external material + 13/15 decisions independently validated by source projects; first blank-slate bootstrap pending |
 | Agent metrics log + usage dashboard | ⏳ Specified 2026-07; per-dispatch model/effort recording starts now (historic data has tokens/duration but not model/effort) |
+| Audit playbook (12 dimensions + backward review) | ✅ Validated (distilled from real audits run end-to-end in a source project); role-ownership map ⏳ first run pending |
 
 ⏳ never means blocked — it means "when you run it, you are the evidence:
 report back and the row flips".

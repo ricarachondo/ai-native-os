@@ -35,6 +35,7 @@
 | `templates/security/README.md` | Threat model, PII inventory, controls map, hybrid authz checklist, credential handling | Security-touching issues; bootstrap question 9; certification questions |
 | `templates/launch/README.md` | 8-section pre-launch checklist + gate ritual + conditional CI/CD chapter | Before ANY public launch; reliability audits |
 | `templates/quality/README.md` | Bug entity, change checklist, carry-over interest, optimization loop, diamond dispatch | Every merge (checklist); bugs; sprint planning (carry-over); any parallel dispatch (Stop Rule) |
+| `templates/quality/AUDIT-PLAYBOOK.md` | 12-dimension backward audit + regression pass + output contract + role ownership map | A1/A2 every Sprint Close; full sweep when functionally complete, BEFORE the launch gate |
 
 ## The rules most often needed mid-task
 

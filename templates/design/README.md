@@ -88,6 +88,33 @@ With a user confirmation gate between phases (do not advance without
 confirming) and per-feature persistence in `docs/design/<feature>/`. In
 fixed-system mode the aesthetic-direction and token phases are skipped.
 
+## Mobile interaction preference: bottom sheets (documented preference)
+
+On small screens, **prefer bottom sheets over centered dialogs and
+dropdowns wherever they don't add friction** — thumb-reachable, contextual
+(the page stays visible behind), and the current interaction convention
+users already know. Codified as the audit playbook's dimension A10 and as
+a rule for future work: new overlays are designed as mobile bottom sheets
+FIRST, then mapped to a desktop presentation (dialog/popover) from the
+same component API — never a desktop dialog adapted down.
+
+Good fits: contextual actions, filters/sort, detail peek, short multi-step
+flows (the Wolt pattern: paginated sheets for lightweight wizards).
+Guardrails (friction test — if any fails, reconsider): never nest more
+than one sheet level · always dismissible (swipe down + scrim tap +
+visible affordance) · respects safe areas and keyboard (inputs must not
+hide behind it) · focus management and `prefers-reduced-motion` per the
+a11y checklist · content that needs full attention or legal confirmation
+still uses a blocking dialog. The web-AND-mobile excellence principle
+applies: the desktop mapping gets the same care.
+
+References (review before installing any library, as always):
+[gorhom/react-native-bottom-sheet](https://github.com/gorhom/react-native-bottom-sheet)
+(React Native), [wolt_modal_sheet](https://github.com/woltapp/wolt_modal_sheet)
+(Flutter, the multi-page pattern), and pattern galleries/guides for
+design exploration. On web stacks, drawer-style components (e.g.
+vaul-class) map the same pattern.
+
 ## Rules that integrate into the OTHER roles (not only the Designer)
 
 - **PM**: every UI issue is a vertical slice (buildable, reviewable and

@@ -186,3 +186,26 @@ Every audit sweep produces:
 | A11y, UX, Onboarding, Animation, Mobile (A5/A6/A8/A9/A10) | Periodic UX sweep; each new surface at build time |
 | Logs/events/observability, Notifications (A11/A12) | Once as a foundation audit; then whenever a new domain event is added |
 | Backward review (Part B) | Every periodic sweep |
+
+## Ownership (role mapping — added when wiring into the role system)
+
+The playbook names WHAT to audit; the role system names WHO:
+
+| Dimensions | Owner |
+|---|---|
+| A1 Security | Security Engineer (its Sprint Close ritual run) |
+| A2 Test coverage | Tester |
+| A3 Robustness · A4 Performance · A11 Logs/observability | Platform Engineer (A4 indexes jointly with the Data Architect) |
+| A5 A11y · A6 UX friction · A7 States · A8 Onboarding · A9 Motion · A10 Mobile patterns | Designer (audit mode — these dimensions ARE its checklist, extended) |
+| A12 Notifications mapping | PM (product mapping) + Platform Engineer (mechanism) |
+| Part B Backward review | Orchestrator collects; each owner re-verifies its own past findings |
+
+Findings follow the house rules: evidence-only, tracker issues per the
+output contract, fix-now vs decision split intact. **Relationship with the
+launch gate**: the launch checklist is a one-shot OUTWARD readiness gate
+(SEO, email, legal, live-surface checks) before going public; this
+playbook is a recurring INWARD review of accumulated work (correctness,
+UX debt, observability). They overlap on security/perf/a11y by design —
+the gate verifies at launch, the playbook keeps verifying after. Run the
+first full sweep when the product is functionally complete and BEFORE the
+launch gate: the sweep finds the debt, the gate confirms readiness.
