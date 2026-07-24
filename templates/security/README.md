@@ -59,6 +59,24 @@ freezes judgment once, then verifies mechanically:
   extension; from then on the extension is as rigid as the core. (Same
   pattern as the design module's genesis → fixed-system fork.)
 
+## Agent credential handling (pattern + known gap)
+
+The rule "agents never see secret values" is DISCIPLINE unless mechanized
+— any agent with shell access can read a local `.env` file. Declare this
+gap in the project's THREAT-MODEL (honesty first) and close it by degrees:
+
+1. **Today (validated)**: secrets that a CLI can fetch at execution time
+   live in the OS keychain/secret store, not in dotfiles — the agent runs
+   the command, never sees the value at rest.
+2. **Direction (the credential-proxy pattern, as productized by managed
+   agent platforms)**: the agent handles an opaque PLACEHOLDER; the real
+   value is swapped in only at egress toward the authorized domain, and
+   stays encrypted the rest of the time. When agent workloads move to a
+   managed platform (see README § Future territory), this comes built in
+   — buy it, don't build it.
+3. **Always**: local dotfiles carry only what genuinely cannot move (and
+   the threat model lists them as an accepted, visible risk).
+
 ## Certification-readiness (ISO 27001 / SOC 2) — honest scope
 
 A certification is granted to an ORGANIZATION (an ISMS: policies, risk

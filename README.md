@@ -54,6 +54,7 @@ mapping of where each one already runs, in each project's
 | `PRINCIPLES.md` | The distilled principles, with the real incident that originated each one and whether it is portable or context-specific | Both |
 | `SPRINTS.md` | Detailed sprint methodology: planning, execution, close, retrospective, and the label taxonomy | Both |
 | `GUARDRAILS.md` | Precautions against limits: session/context, spend, and the triggers/counters mechanism | Both |
+| `INDEX.md` | Navigation map: what to read, when | Both |
 | `templates/` | Skeletons ready to copy and fill in: AGENTS.md, MEMORY.md, PROCESS.md, LEARNINGS.md, DECISIONS.md, 8 agent roles, design module, database-documentation module, launch-readiness module, security module, delivery-quality module | The session |
 
 ## Improvement loop (this repo learns too)
@@ -92,7 +93,12 @@ default; each has its adoption trigger under the counters meta-rule
 (`GUARDRAILS.md` § Triggers):
 
 - **Watchdog / automatic flow reactivation**: an external process that
-  detects session interruptions nobody picks up and relaunches. Trigger
+  detects session interruptions nobody picks up and relaunches.
+  **Implementation note (buy, don't build)**: when this or the nightly
+  trigger fires, evaluate managed agent platforms first (e.g. Claude
+  Managed Agents: sandboxing, credential proxy, checkpointing, session
+  tracing) — agent infrastructure is not our core product, the
+  build-vs-buy default applies to it too. Trigger
   defined in the source project: 2 incidents within a 3-sprint window where
   no live process picks up the interruption and the user has to ask "what
   happened?". At distillation time: 1/2 — not built.
@@ -138,6 +144,8 @@ promoted from future territory into the body of the kit — never before.
 | API-contract docs (conditional) | ⏳ Specified; no source project has external API consumers yet |
 | Diamond dispatch (general pattern) | Instances: parallel independent issues ✅ validated · design pod and research fan-outs ⏳ pending first formal run |
 | Birth contract (role/pod/workflow creation) | ⏳ Specified; applies to the next role created |
+| Stack-defaults chapter | ⏳ Specified from external material + 13/15 decisions independently validated by source projects; first blank-slate bootstrap pending |
+| Agent metrics log + usage dashboard | ⏳ Specified 2026-07; per-dispatch model/effort recording starts now (historic data has tokens/duration but not model/effort) |
 
 ⏳ never means blocked — it means "when you run it, you are the evidence:
 report back and the row flips".
@@ -176,6 +184,13 @@ company ideas (see § Pillar).
   [mattpocock/skills](https://github.com/mattpocock/skills) (MIT —
   `diagnosing-bugs` informed the bug template); GRC control packs
   (Scytale and community ISO/SOC2 collections) as control-list references.
+- A public "15 tech stack decisions" explainer by coderz.py (Instagram,
+  2026-07) — adapted with credit into `templates/docs/STACK-DEFAULTS.md`
+  as principles-with-deviation-conditions; its CI/CD-from-day-one
+  counter-argument is recorded in the launch module's CI/CD chapter.
+- Anthropic's Claude Managed Agents material — source of the
+  credential-proxy pattern registered in the security module and the
+  buy-don't-build note in Future territory.
 - A public "Graph Engineering" explainer by techwith.ram (Instagram
   carousel, 2026-07) — reviewed against this system; most concepts were
   already institutionalized here, and its Stop Rule ("where does the work

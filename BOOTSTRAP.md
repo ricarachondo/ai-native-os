@@ -62,6 +62,11 @@ confirmation rubric.
    retrofitted at the first auth issue is reactive by construction — the
    classification must exist BEFORE the first table with user data does.
 
+**Stack support**: if the user arrives WITHOUT a decided stack, walk the
+defaults table in `templates/docs/STACK-DEFAULTS.md` (15 decisions with
+deviate-when conditions) instead of asking open-ended. Every project,
+regardless of stack, adopts its web-AND-mobile excellence principle.
+
 ## Phase 1 — Permissions (ask for ALL of them here, at once)
 
 Explicitly list what you are going to do and ask for the ok a single time:

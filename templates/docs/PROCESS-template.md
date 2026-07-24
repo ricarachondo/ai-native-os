@@ -274,6 +274,17 @@ failures are filed as issues AT THAT MOMENT; later launches re-run the
 delta. Full checklist and ownership map: the kit's
 `templates/launch/README.md`.
 
+## Agent metrics log (measurement, principle 20 mechanized)
+
+Every agent dispatch appends ONE row to `docs/metrics/dispatches.csv`:
+`date,sprint,issue,role,model,effort,tokens,duration_min,relaunch,bucket`
+(bucket = expected / preventable-rework / poor-handoff, filled at retro).
+The task notification already carries tokens/duration — recording model
+and effort at dispatch time is the missing habit. The Sprint Close renders
+the dashboard from this file (model/effort mix per role over time, cost
+per issue trend, relaunch counts) — visualization is cheap once the data
+is structured; unstructured retro prose cannot be trended.
+
 ## Token efficiency (effort, task budgets, advisory)
 
 See the kit's `GUARDRAILS.md` § "The first lever is effort" for the full

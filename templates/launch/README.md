@@ -124,9 +124,12 @@ teams — so CI/CD is NOT mandatory at bootstrap. Register it, adopt it when
 any cue fires: multiple contributors or sessions merging concurrently ·
 external users depending on release stability · a regression reaching a
 deploy that the Tester flow should have caught (counter: 2 → adopt) ·
-compliance/certification requiring automated pipeline evidence. Minimum
-adoption: automated test run + migration apply on push to each
-environment branch. Owner: Platform Engineer proposes, the user approves.
+compliance/certification requiring automated pipeline evidence. **The
+honest counter-argument, on the record**: "automation is cheap now and
+expensive to retrofit later" is true — which is why the MINIMUM
+(automated test run on push to each environment branch) adopts at the
+FIRST cue, not the second; the full pipeline (migrations, deploy gates)
+stays cue-driven. Owner: Platform Engineer proposes, the user approves.
 
 ## Ownership (who runs what)
 
