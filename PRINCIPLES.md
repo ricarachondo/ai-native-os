@@ -100,6 +100,22 @@ principles that govern it.)
     continues with the rest and pulls from the next sprint if this one runs
     out.
 
+26. **[PORTABLE] A policy without its variables logged is unevaluable.**
+    When a rule makes something VARIABLE (which model, which effort level,
+    which budget), the measurement schema gains that variable IN THE SAME
+    change — decision inputs are logged at decision time, because outputs
+    alone (tokens, duration) cannot evaluate inputs, and inputs are
+    unreconstructible later. Every new policy declares its evaluation
+    data contract (the exact columns) at creation, and "evaluate
+    periodically" without a named data contract is intention, not a
+    mechanism. *Incident: model-per-task and effort policies ran for 5
+    real sprints while the logs captured only tokens/duration — the
+    policies' own variables (model, effort) were never recorded because
+    the tooling handed us outputs for free and nobody logged their own
+    choices; the historical evaluation the user later asked for was
+    impossible to produce, only approximable from the policy-in-force
+    dates in the decision log.*
+
 ## Cost and models
 
 18. **[PORTABLE] S/M/L estimated-cost size at grooming** (calibrate with
