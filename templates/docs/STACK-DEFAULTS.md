@@ -26,6 +26,17 @@
 | 14 | Async infra | **No message queue until you have async problems** — background jobs ≠ queue infrastructure (see processing-reliability § 8: long work still leaves the request cycle) | Real decoupling needs with measured volume |
 | 15 | Observability | **Buy visibility** (managed error tracking/monitoring) | The bill outweighs the engineering cost — a scale problem |
 
+## Constrained dev hardware (portable note)
+
+On small dev machines (8GB-class), local container stacks are **on-demand,
+never standing**: started for the phases that need them (build, E2E),
+stopped when the cycle closes — a permanently-running container VM
+degrades the whole machine and its silent shutdown breaks the QA gate
+without looking like a product bug. Prefer container runtimes that release
+memory dynamically over fixed-reservation VMs, and trim the local stack to
+the services actually used. The structural exit is a cloud test
+environment the E2E suite can target (never a de-facto-production one).
+
 ## Web AND mobile excellence (hard principle, applies to EVERY project)
 
 Every project is designed to serve **both web and mobile with excellence**
