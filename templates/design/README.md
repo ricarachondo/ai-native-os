@@ -143,6 +143,75 @@ Every project in fixed-system mode documents its system in two files
 Live reference: a fixed-system project keeps this as
 `.claude/skills/<design-system>/` in its own repo.
 
+## Design-to-code: Figma MCP + Code Connect (operating method)
+
+When the fixed system lives in **Figma**, this is how we translate it into
+code. Validated on a real project run (2026-07-23).
+
+### The read-FROM-Figma flow (this is the default, works on any plan)
+
+The Figma **Dev Mode MCP** (`mcp__figma-desktop__*`, enabled per-file in
+the desktop app's Preferences) is **read-only**: it turns a design into
+code context. It does NOT author designs into Figma — the human designs,
+the agent reads and implements.
+
+Order — **tokens → components → screens** (never screens first; it produces
+throwaway work):
+
+1. **Tokens first.** `get_variable_defs` on the Foundations page returns
+   the real values (hex, fonts, shadows) as DATA. Land them in the token
+   layer (CSS vars / Tailwind `@theme`) before touching any component.
+2. **Components next.** `get_design_context` on a component returns
+   reference React+Tailwind code + a screenshot + token hints. Treat it as
+   a **reference, not paste-in code** — it comes absolutely-positioned with
+   hardcoded hex. ADAPT it to the project's stack: map every hex to a
+   project token, every Figma variant/state to the component's variant
+   system (`cva`, etc.). Never emit a raw hex where a token exists; never
+   invent a prop the code component doesn't have.
+3. **Screens last**, composed from the now-branded components.
+4. **Verify with `get_screenshot`** (orientation + visual diff), not as the
+   source of truth. The design-to-code skill mandates a screenshot after
+   `get_design_context` for context — screenshots confirm, they don't
+   specify.
+
+Load the platform skill `figma:figma-design-to-code` BEFORE
+`get_design_context`; it owns the workflow contract.
+
+**Safety migration rule** (learned incident): remapping a shared semantic
+token (e.g. shadcn `--primary`) globally can silently break contrast where
+that token is used with an assumed text color. When a pastel system uses
+"fill + dark text" but the component library assumes "saturated fill +
+white text", change the COMPONENT variant, not just the token — and land
+neutrals/surfaces via token first, risky filled variants via component
+second, so nothing renders broken between commits.
+
+### Code Connect (the stronger, Figma-hosted link) — plan-gated
+
+Code Connect publishes the mapping "this Figma component ↔ this code
+snippet" back to Figma, so inspecting a component in Dev Mode shows the
+project's REAL component code instead of a generic translation. Worth it
+for a maturing system — but there are **hard prerequisites** an agent must
+check before promising it:
+
+- **Figma Organization or Enterprise plan, Dev or Full seat.** Not
+  available on Free/Professional — the API returns a plan error. This is a
+  billing decision; the agent cannot enable it. **Verify first** by calling
+  `get_code_connect_suggestions` — if it returns the plan error, STOP and
+  tell the user; do not scaffold non-functional Code Connect files.
+- **Components published** to a team library (local-only components are
+  invisible to Code Connect).
+
+Two flavors: (a) **MCP template files** `.figma.ts` (`figma.selectedInstance`
+API, saved via `send_code_connect_mappings` — skill `figma:figma-code-connect`);
+(b) **CLI parser** `.figma.tsx` (`figma.connect()`, published with
+`npx figma connect publish` + a Figma token the USER runs locally — never
+paste the token into the agent). Publishing always needs the user's token
+and the paid plan.
+
+**Default posture**: run the read-FROM-Figma flow now (works, no plan
+change); document Code Connect as the activation path and only build its
+files once the plan supports it — otherwise the files are inert deps.
+
 ## Catalog of aesthetic directions (genesis mode)
 
 Two complementary sources, installable via CLI:
