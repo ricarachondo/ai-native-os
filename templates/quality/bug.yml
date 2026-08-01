@@ -1,0 +1,72 @@
+# Install as .github/ISSUE_TEMPLATE/bug.yml — mirrors BUG-template.md
+name: Bug report
+description: Incorrect behavior of something that already exists
+labels: ["bug", "needs grooming"]
+body:
+  - type: input
+    id: symptom
+    attributes:
+      label: One-line symptom (user's perspective)
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity (by real user impact, not stack-trace ugliness)
+      options:
+        - "S1 — users blocked / data at risk"
+        - "S2 — core flow degraded, workaround exists"
+        - "S3 — non-core broken"
+        - "S4 — cosmetic"
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment + version/commit
+      placeholder: "uat · a1b2c3d"
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Minimal reproduction
+      placeholder: "1. …\n2. …"
+    validations:
+      required: true
+  - type: textarea
+    id: expected-actual
+    attributes:
+      label: Expected vs actual
+      placeholder: "Expected: …\nActual: …"
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence (screenshot / log excerpt / request id — at least one)
+    validations:
+      required: true
+  - type: checkboxes
+    id: pre-filing
+    attributes:
+      label: Pre-filing verification (mandatory)
+      options:
+        - label: "Searched duplicates & prior occurrences (paste query + result in a comment)"
+          required: true
+        - label: "Regression check done: worked before? (last-good commit) / never worked / unknown"
+          required: true
+        - label: "Data or code? (corrupt data · code defect · unclear)"
+          required: true
+        - label: "Affected flows listed beyond the repro"
+          required: true
+  - type: textarea
+    id: workaround
+    attributes:
+      label: Workaround
+      placeholder: "temporary mitigation — or 'none'"
+  - type: markdown
+    attributes:
+      value: |
+        **On close (mandatory — a bug does not close without these, as a comment):**
+        Root cause (the cause, not the symptom) · Fix commit · **Regression test** (file/name) · LEARNINGS? yes/no
