@@ -130,6 +130,36 @@ principles that govern it.)
     project (an auth-surface gate, then a webhook-plus-cron gate) — both
     times the conditions got tracked with their trigger event and neither
     slipped past it unnoticed.*
+30. **[PORTABLE] "Approved with conditions" is two different mechanisms —
+    name which one applies, don't let the phrase blur them.** Principle 27
+    covers conditions tied to a FUTURE event (merge proceeds now). The
+    other shape is BLOCKING-NOW: a finding that violates an absolute hard
+    security rule on the exact surface being merged today, or one of the
+    security role's own non-negotiable checklist items on code shipping
+    right now — fix before merge, no deferral, regardless of an
+    orthogonal perimeter control that happens to currently mask it (e.g.
+    a temporary access wall in front of the whole app doesn't excuse a
+    handle-enumeration bug in the page behind it). Decision rule: event-
+    tied requires a genuinely separate future precondition (real
+    third-party credentials, a feature not yet public) to become
+    reachable at all; blocking-now is exploitable today by construction.
+    *Evidence: the source project's first two gate-condition cases were
+    both event-tied; its third sprint produced two blocking-now findings
+    on surfaces being merged same-day (a SQL-wildcard enumeration bug,
+    a non-constant-time secret comparison) — conflating them with the
+    event-tied phrasing would have let both ship.*
+31. **[PORTABLE] When a security gate proposes a literal code fix for
+    later implementation, it states whether it checked the codebase for
+    an existing equivalent pattern.** A gate's own proposed remediation
+    can itself be the defect a LATER gate has to catch — the implementer
+    built exactly what was asked, so the rework isn't implementer error,
+    it's an unreferenced existing pattern in the same repo. *Evidence: a
+    gate proposed a plain string-inequality secret comparison as "the
+    concrete fix" for a deferred finding; a later gate on the issue that
+    implemented it flagged the same non-constant-time gap the codebase
+    had already solved twice elsewhere.* A 30-second grep for
+    existing helpers at authoring time is cheaper than a full extra
+    verification cycle sprints later.
 
 26. **[PORTABLE] A policy without its variables logged is unevaluable.**
     When a rule makes something VARIABLE (which model, which effort level,
@@ -221,3 +251,24 @@ principles that govern it.)
 23. **[PORTABLE] Ask EARLIER, not less.** Cost goes down when the right
     context arrives in the first handoff. And blocking questions are asked
     at the moment (they are not batched if they stall an issue).
+32. **[PORTABLE] Act on friction and unconfirmed severity the same cycle
+    they surface — never wait for a second occurrence.** Two distinct
+    triggers deserve the identical orchestrator reflex: (a) an agent
+    reports operational friction in passing without requesting action
+    (disk space, a flaky dependency, a slow step) — investigate and fix
+    it now rather than letting it become a hard blocker for a later
+    dispatch; (b) a severity call from an earlier pass gets informally
+    re-characterized under different, non-matching language by a later
+    verifier (e.g. "known flakiness" resurfacing as "possible real
+    leak") — dispatch a dedicated, definitive investigation immediately
+    rather than either dismissing the new language or silently
+    inheriting the old verdict into the next report as settled fact.
+    Both failure modes compound the same way: something unconfirmed gets
+    treated as confirmed simply because nobody stopped to check. *Evidence:
+    a source-project orchestrator caught a disk-space report from an
+    implementer and freed it via a safe, reversible cleanup before the
+    next dispatch could fail on it; separately, a security ambiguity that
+    had been informally called "test flakiness" for two sprints got a
+    dedicated adversarial investigation the moment a different verifier's
+    language declined to repeat that verdict — confirmed benign, but only
+    because it was checked rather than assumed.*
