@@ -50,7 +50,15 @@ freezes judgment once, then verifies mechanically:
   rate limits on writes and expensive calls · capability tokens
   unpredictable, constant-time compared, never logged · privileged actions
   leave a trail · state transitions that change visibility change
-  authorization WITH them.
+  authorization WITH them · **public webhook/signature-verified endpoints
+  are tested against the REAL algorithm, never a mocked SDK verifier —
+  and the independent verifier (Tester) recomputes the signature from
+  scratch with its own secret rather than reusing the implementer's test
+  fixture**, so both passes exercise the real cryptographic path instead
+  of two copies of the same assumption. *Evidence: happened organically
+  in a source project (hand-computed HMAC on both sides, no vendor-SDK
+  mock) and caught nothing false-positive only because it was done right
+  — make it required, not incidental.*
 - **Generative questions** (once per project, at bootstrap or first
   audit): multi-tenancy? inherited/derived permissions? capability tokens
   and their blast radius if leaked? state machines that flip visibility?

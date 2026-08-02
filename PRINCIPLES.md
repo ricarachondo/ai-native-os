@@ -44,6 +44,25 @@ principles that govern it.)
    environments.** Large issues carry `.tmp/progress-{issue}.md` updated
    per sub-step. *Validated against a real interruption: the relaunched
    agent resumed without rework.*
+29. **[CONTEXTUAL→verify] Worktree isolation (principle 6) isolates code,
+    not necessarily a shared local dev database.** When the stack runs
+    one local database service (e.g. Postgres via a local Supabase/Docker
+    stack) shared by project_id/port across all worktrees, two SWEs
+    touching schema in parallel WILL step on each other's resets — and
+    the same root cause (shared mutable state + parallelism) can resurface
+    one layer down even after the worktree-level case is fixed, e.g. test
+    files racing on a shared seeded row inside a single worktree once the
+    test runner parallelizes them. *Evidence: two independent SWEs in the
+    source project both detected and self-recovered from the same
+    collision; days later a variant hit at the test-file layer, which the
+    worktree-level fix (serialize schema verification across worktrees)
+    did not cover.* Treat "shared local state + parallelism" as a family
+    of risk to re-check at each new layer of parallelism introduced
+    (worktrees, test files, test runners), not a single fix-and-forget —
+    and record the concrete mitigation (isolated ports, serialized
+    verification, per-file test data) in the project's own LEARNINGS.md,
+    since the exact stack/tooling is contextual even though the pattern
+    is not.
 7. **[PORTABLE] Verify, don't trust**: a truncated/cut-off agent report ≠
    bad work NOR good work — verify against the repo (`git diff`, run the
    tests yourself) before acting. And if what's missing is small, the
@@ -99,6 +118,18 @@ principles that govern it.)
     default recommendation. A blocker only stops ITS issue — the team
     continues with the rest and pulls from the next sprint if this one runs
     out.
+27. **[PORTABLE] A security gate's conditions attach to a future
+    triggering event, not to the sprint boundary.** When a gate finds a
+    forward-looking risk (not a bug in what shipped), don't force a binary
+    block-vs-undated-P1 choice: file it as APPROVED WITH CONDITIONS,
+    where each condition names a concrete trigger — "before public
+    signups open," "before real third-party credentials load in a shared
+    environment" — not just a priority label. The merge proceeds today;
+    the debt becomes impossible to silently defer past the moment it
+    actually turns exploitable. *Evidence: used twice in the source
+    project (an auth-surface gate, then a webhook-plus-cron gate) — both
+    times the conditions got tracked with their trigger event and neither
+    slipped past it unnoticed.*
 
 26. **[PORTABLE] A policy without its variables logged is unevaluable.**
     When a rule makes something VARIABLE (which model, which effort level,
@@ -121,6 +152,20 @@ principles that govern it.)
 18. **[PORTABLE] S/M/L estimated-cost size at grooming** (calibrate with
     the project's own real data); an L with a doubtful budget is split
     BEFORE dispatching, documenting the descope.
+28. **[PORTABLE] S/M/L sizing should weight external-integration count
+    and mid-issue architecture-pivot risk, not just apparent scope size.**
+    Two issues sized identically at grooming cost 27% apart in
+    implementer tokens; the delta traced cleanly to one integrating two
+    third-party services (each its own client, webhook/signature surface,
+    live schema-drift risk) against the other being 100% internal.
+    Separately, small schema-only issues can legitimately blow their
+    token band by 50-80% not from rework but from a real mid-issue
+    discovery ("the proposed fix is a no-op, pivoting to a different
+    mechanism") — that overrun is `expected`, not `preventable-rework`,
+    when the pivot is reported rather than hidden. Add both as explicit
+    sizing multipliers: count of external services integrated, and
+    "resolves an open architecture question mid-implementation" as a flag
+    that bumps the budget even for an otherwise-small issue.
 19. **[PORTABLE — EVOLVING CHAPTER] Model + effort per task.** This chapter
     does NOT fix concrete models as a rule: assignment depends on the
     user's current plan and is re-evaluated periodically — each project
