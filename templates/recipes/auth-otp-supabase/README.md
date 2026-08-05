@@ -123,6 +123,20 @@ Env vars: the standard Supabase trio + a public cooldown override
 vars when it lands — plus the launch module's email section
 (SPF/DKIM/DMARC, sending subdomain) which this recipe defers to.
 
+## Production SMTP (Resend-class) — status: NOT yet built anywhere
+
+Explicit, so nobody assumes this section exists: no source project has
+implemented the production email provider yet — the source project
+deferred it by recorded decision (no real users beyond the owner → no
+deliverability urgency, viable behind the perimeter lock). What IS known:
+it is the PREREQUISITE for cloud login with a custom template (trap 1),
+and its landing checklist is the launch module's email section
+(SPF/DKIM/DMARC, sending subdomain `mail.`, inbox tests on two providers,
+mail-tester). **The first project to implement it writes this section**
+(standard recipe-update loop): provider/domain wiring, template migration
+from the local one, env vars, and whatever it pays to learn. Likely
+first: whichever project reaches real-user login first.
+
 ## Known gaps in the source implementation (inherit knowingly)
 
 - Service-client import boundary enforced by comment only (no lint rule).
