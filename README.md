@@ -55,7 +55,7 @@ mapping of where each one already runs, in each project's
 | `SPRINTS.md` | Detailed sprint methodology: planning, execution, close, retrospective, and the label taxonomy | Both |
 | `GUARDRAILS.md` | Precautions against limits: session/context, spend, and the triggers/counters mechanism | Both |
 | `INDEX.md` | Navigation map: what to read, when | Both |
-| `templates/` | Skeletons ready to copy and fill in: AGENTS.md, MEMORY.md, PROCESS.md, LEARNINGS.md, DECISIONS.md, 8 agent roles, design module, database-documentation module, launch-readiness module, security module, delivery-quality module | The session |
+| `templates/` | Skeletons ready to copy and fill in: AGENTS.md, MEMORY.md, PROCESS.md, LEARNINGS.md, DECISIONS.md, 8 agent roles, design module, database-documentation module, launch-readiness module, security module, delivery-quality module, recipes (stack-tagged implementation playbooks) | The session |
 
 ## Improvement loop (this repo learns too)
 
@@ -148,6 +148,7 @@ promoted from future territory into the body of the kit — never before.
 | Stack-defaults chapter | ⏳ Specified from external material + 13/15 decisions independently validated by source projects; first blank-slate bootstrap pending |
 | Agent metrics log + usage dashboard | ⏳ Specified 2026-07; per-dispatch model/effort recording starts now (historic data has tokens/duration but not model/effort) |
 | Audit playbook (12 dimensions + backward review) | ✅ Validated (distilled from real audits run end-to-end in a source project); role-ownership map ⏳ first run pending |
+| Recipe: auth-otp-supabase | ✅ Validated first-party (built + adversarial security gate + ~30 E2E scenarios in a source project); first REUSE by a second project pending |
 
 ⏳ never means blocked — it means "when you run it, you are the evidence:
 report back and the row flips".

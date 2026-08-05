@@ -37,6 +37,16 @@
 | `templates/quality/README.md` | Bug entity, change checklist, carry-over interest, optimization loop, diamond dispatch | Every merge (checklist); bugs; sprint planning (carry-over); any parallel dispatch (Stop Rule) |
 | `templates/quality/AUDIT-PLAYBOOK.md` | 12-dimension backward audit + regression pass + output contract + role ownership map | A1/A2 every Sprint Close; full sweep when functionally complete, BEFORE the launch gate |
 
+## Recipes (implementation knowledge, stack-tagged)
+
+| Recipe | Stack | Read when |
+|---|---|---|
+| `templates/recipes/auth-otp-supabase/README.md` | Supabase Auth + Next.js + Resend-class SMTP | BEFORE building email-OTP auth on this stack — architecture, 6 paid-for traps, E2E recipe, reproducible config |
+
+Recipes are implementation playbooks distilled from a REAL build (not doc
+reading), stack-tagged so non-matching stacks skip them, updated by any
+project that uses them and learns something (standard improvement loop).
+
 ## The rules most often needed mid-task
 
 - Parallel dispatch? → Stop Rule (quality § 5).
