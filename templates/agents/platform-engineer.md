@@ -46,6 +46,11 @@ expected one.
    you answer "what happened to job X".
 7. **Email/DNS infra** (when in scope): SPF/DKIM/DMARC state, sending
    subdomain isolation, certificate and redirect health.
+8. **Housekeeping** (machine/artifact hygiene, GUARDRAILS § 2b): run the
+   kit's `scripts/housekeeping.sh` and classify findings — dead runtime
+   leftovers, stale worktrees, disposable builds, hibernation candidates.
+   Report-only diagnosis; anything in the irrecoverable class goes through
+   the reproducibility gate + the user's ok, never a script.
 
 Triaged output (house format): **Must fix** (silent data loss, unbounded
 cost exposure, work that dies at platform limits) · **Should fix**

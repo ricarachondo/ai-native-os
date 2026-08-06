@@ -150,6 +150,7 @@ promoted from future territory into the body of the kit — never before.
 | Audit playbook (12 dimensions + backward review) | ✅ Validated (distilled from real audits run end-to-end in a source project); role-ownership map ⏳ first run pending |
 | Recipe: auth-otp-supabase | ✅ Validated first-party (built + adversarial security gate + ~30 E2E scenarios in a source project); first REUSE by a second project pending |
 | Disk/artifact lifecycle policy | ✅ Validated first-party (real recovery: <5GB free → 16GB, with a reproducibility-verification gate executed live across 3 projects before any deletion) |
+| Housekeeping script + skill packaging | ⏳ Script smoke-tested on the source machine (already surfaced findings the manual sweep missed); first full agent-driven run pending. The underlying procedure is the validated policy above |
 
 ⏳ never means blocked — it means "when you run it, you are the evidence:
 report back and the row flips".

@@ -56,3 +56,4 @@ project that uses them and learns something (standard improvement loop).
 - Postponing debt? → carry-over framework + floor (quality § 3).
 - Metric-shaped goal? → optimization loop (quality § 4).
 - Disk full / cleaning up a paused project? → GUARDRAILS § 2b (verify reproducibility before deleting).
+- Executable diagnosis for the above → `scripts/housekeeping.sh` (report-only) + the housekeeping skill (`templates/skills/housekeeping/`).
