@@ -79,6 +79,13 @@ context + default recommendation + what happens if there is no answer;
 source of truth = `human` label), backlog + detected gaps, environment
 health, cost/tokens.
 
+## Disk check (orchestrator session start)
+
+Cheap, once per session: check free disk space; **<15GB free → propose
+housekeeping to the user** before starting new work (stop unused local
+stacks, prune dangling images, review paused projects for hibernation —
+kit `GUARDRAILS.md` § 2b). Same cost-shape as the kit-sync check.
+
 ## Continuity against session limits
 
 Full protocol in the kit's `GUARDRAILS.md`. Operational summary:
@@ -133,6 +140,11 @@ the kit's `SPRINTS.md` § Retrospective):
 the Security Engineer runs dimension A1 and the Tester dimension A2 as
 part of the close; the FULL 12-dimension sweep + backward review runs when
 the product is functionally complete, before the launch gate.
+
+**Housekeeping at close**: if this project has no sprint immediately
+following, propose hibernation (kit `GUARDRAILS.md` § 2b) — stop the
+local stack without backup, drop `node_modules`/`.next`. Otherwise just
+stop the stack + prune dangling images.
 
 The orchestrator ALWAYS relays the full report to the user in the
 conversation. Narrative → `docs/retros/YYYY-MM-DD-sprint-N.md`; real

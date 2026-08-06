@@ -214,6 +214,49 @@ the whole file.
 
 ---
 
+## 2b. Disk and artifact lifecycle
+
+Real incident (2026-08): a dev machine dropped to <5GB free — traced to a
+DEAD container-VM disk left behind after uninstalling one runtime in favor
+of another (14GB orphaned), plus stale worktrees and disposable build
+artifacts nobody was pruning. The fix generalizes into a lifecycle policy,
+tied to project state:
+
+| State | Rule |
+|---|---|
+| **Active (sprint running)** | Local container stack on-demand (see stack-defaults' constrained-hardware note). Volumes persist for the sprint; `.next`/`node_modules` stay. |
+| **Cycle close** (already a process moment) | Stop the local stack + prune DANGLING images only (`docker image prune -f`, no `-a`) — one command, zero judgment. |
+| **Project PAUSED** (no active sprint for a stretch, or user-declared) | "Hibernation": stop the stack with no backup (`supabase stop --no-backup` or equivalent) + delete `node_modules`/`.next`. Waking = reinstall + start + reseed. |
+| **Project FINISHED** | Hibernation, never `docker image prune -a` by default (with other projects' stacks stopped by the on-demand policy, that would force costly re-pulls on THEIR next start — recoverable, but avoidable cost). Move the repo to an archive location if the user wants. |
+| **Runtime/tool migration** (e.g. switching container runtimes) | The OLD runtime's data directory does not self-delete on uninstall — check for it explicitly and remove only after the reproducibility check below. |
+
+**The invariant that makes deletion safe**: *local data is reproducible by
+design* — every local dataset lives in migrations + seed scripts, never
+only in a running container. A local dataset that can't be regenerated is
+a PROCESS bug (flag it, don't work around it by keeping the fragile copy
+around forever).
+
+**Before deleting anything with real data (the only genuinely risky
+class)**: verify reproducibility empirically, per project, BEFORE
+deleting the source — reset the local DB and confirm the seed reproduces
+real data, not "should be fine." If a seed depends on an external or
+paused source (a legacy project, a third-party API), that dependency is
+itself a finding — file it as tech debt (the seed should depend on the
+project's OWN live sources), and rescue that project's data before
+deleting anything, don't delete on schedule regardless.
+
+**What's actually irrecoverable vs merely costly** (get this distinction
+right before any bulk cleanup): container volumes with real local data,
+and uncommitted files in an orphaned worktree, ARE genuinely
+irrecoverable. Build output, `node_modules`, browser binaries, package
+caches, and container IMAGES are not — worst case is time and bandwidth.
+Spend verification effort proportional to which class an item is in.
+
+**Worktree hygiene** (converges with the existing worktree-isolation
+rule): before removing an orphaned worktree, `git status` inside it must
+be clean AND its branch's content must already be in the target branch —
+uncommitted work in an orphan is the other irrecoverable class.
+
 ## 3. Triggers and counters — the general mechanism
 
 The same discipline that governs the limits governs all process evolution.

@@ -35,7 +35,7 @@ degrades the whole machine and its silent shutdown breaks the QA gate
 without looking like a product bug. Prefer container runtimes that release
 memory dynamically over fixed-reservation VMs, and trim the local stack to
 the services actually used. The structural exit is a cloud test
-environment the E2E suite can target (never a de-facto-production one).
+environment the E2E suite can target (never a de-facto-production one). Full lifecycle policy (active/paused/finished states, what's genuinely irrecoverable vs merely costly, the reproducibility-before-deletion rule): `GUARDRAILS.md` § 2b.
 
 ## Web AND mobile excellence (hard principle, applies to EVERY project)
 

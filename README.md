@@ -149,6 +149,7 @@ promoted from future territory into the body of the kit — never before.
 | Agent metrics log + usage dashboard | ⏳ Specified 2026-07; per-dispatch model/effort recording starts now (historic data has tokens/duration but not model/effort) |
 | Audit playbook (12 dimensions + backward review) | ✅ Validated (distilled from real audits run end-to-end in a source project); role-ownership map ⏳ first run pending |
 | Recipe: auth-otp-supabase | ✅ Validated first-party (built + adversarial security gate + ~30 E2E scenarios in a source project); first REUSE by a second project pending |
+| Disk/artifact lifecycle policy | ✅ Validated first-party (real recovery: <5GB free → 16GB, with a reproducibility-verification gate executed live across 3 projects before any deletion) |
 
 ⏳ never means blocked — it means "when you run it, you are the evidence:
 report back and the row flips".
