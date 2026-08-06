@@ -57,3 +57,25 @@ executable arm. Two iron rules before anything else:
 `node_modules`/`.next` — ONLY after step 4's gate for that project.
 Waking: install + start + reseed (~10 min). Finished projects: same, and
 never purge shared images that other projects' next start would re-pull.
+
+## Learning loop (this skill maintains itself)
+
+ALSO invoke this skill to UPDATE it — same pattern as any kit knowledge:
+
+- Every run that discovers a **new residue source** (a tool that leaves
+  orphaned data, a new cache location, a new stale-artifact class) or a
+  **new trap** (something that looked safe and wasn't, or vice versa)
+  updates the script AND this skill in the kit IN THE SAME CYCLE — a
+  finding only in the run's report is a finding the next run re-discovers.
+- The stack will keep growing; each new tool that leaves residue earns its
+  line in `scripts/housekeeping.sh` § dead-leftovers or § caches when it
+  is ADOPTED, not when it first fills the disk.
+
+## Install (reference, don't copy)
+
+- **On the kit's own machine**: SYMLINK the skill directory from the
+  user-level skills dir to the kit repo (single source — kit updates
+  propagate instantly, no drift): the installed skill IS the kit's file.
+- **External adopters**: copy it, and refresh the copy whenever the
+  kit-sync review shows changes under `templates/skills/` — a stale copy
+  of a self-maintaining skill defeats its loop.

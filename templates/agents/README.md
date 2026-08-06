@@ -52,6 +52,17 @@ change checklist like any other — with these specific items:
 - [ ] If it is a dispatch pattern: cues declared (patterns that only
       activate when the user remembers them don't compound)
 
+## Kit-shipped SKILLS follow the same contract
+
+A skill distributed by the kit (`templates/skills/*`) declares, in its own
+SKILL.md: its activation triggers, its LEARNING LOOP (when a run discovers
+something new, the skill+script update in the same cycle), and its install
+method — **reference, don't copy**: on the kit's own machine, symlink the
+skill dir into the user-level skills dir (the installed skill IS the kit
+file, zero drift); external adopters copy and refresh on kit-sync review.
+A kit skill without a declared learning loop is incomplete by definition —
+static skills rot exactly like copied rules.
+
 ## Why this is enough (and what it does not cover)
 
 A new role created under this contract adopts, without any extra step:
