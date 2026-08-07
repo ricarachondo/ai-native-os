@@ -143,6 +143,27 @@ Every project in fixed-system mode documents its system in two files
 Live reference: a fixed-system project keeps this as
 `.claude/skills/<design-system>/` in its own repo.
 
+## Component-usage and responsive skills (kit-level, not per-project)
+
+Distinct from the per-project design system skill above (which owns
+**visual identity** — tokens, color, type), the kit ships two
+project-agnostic skills at `templates/skills/`:
+
+- `02ui-components/` — decision rules for ~25 standard UI components
+  (when to use each, confusable-component graph with one-line tests,
+  accessibility requirements with exact WCAG criteria). Distilled from
+  [02ui.com](https://02ui.com/components/).
+- `responsive-flow/` — desktop/tablet/mobile adaptation rules, the 8-point
+  grid system (with sources), touch target minimums (legal 24×24 vs
+  practical 44×44/48×48), and long-form/article layout + video-embed
+  patterns.
+
+Both state their hierarchy explicitly: the project's visual design system
+wins on tokens/color/type; these skills win on component choice,
+behavior, structure, dimensions, and accessibility. Copy both into any new
+project's `.claude/skills/` verbatim (they're written to require zero
+project-specific edits) — see BOOTSTRAP question 8.
+
 ## Design-to-code: Figma MCP + Code Connect (operating method)
 
 When the fixed system lives in **Figma**, this is how we translate it into

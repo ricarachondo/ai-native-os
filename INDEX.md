@@ -31,6 +31,8 @@
 | Module | What | Read when |
 |---|---|---|
 | `templates/design/README.md` | Fixed-system/genesis fork, Designer modes, design pod, catalog | UI work; bootstrap question 8 |
+| `templates/skills/02ui-components/SKILL.md` | Component decision rules (~25 components), confusable-component graph, a11y (WCAG-cited) | Choosing/auditing/grooming any UI component, any project |
+| `templates/skills/responsive-flow/SKILL.md` | Desktop/tablet/mobile adaptation, 8pt grid, touch targets, article/embed layout | Responsive/mobile-first work, spacing decisions, long-form content layout |
 | `templates/docs/database/README.md` | Business-language DB docs format + hard sync rule + conditional API-contract chapter | Any schema work; bootstrap |
 | `templates/security/README.md` | Threat model, PII inventory, controls map, hybrid authz checklist, credential handling | Security-touching issues; bootstrap question 9; certification questions |
 | `templates/launch/README.md` | 8-section pre-launch checklist + gate ritual + conditional CI/CD chapter | Before ANY public launch; reliability audits |
