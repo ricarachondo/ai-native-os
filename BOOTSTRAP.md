@@ -75,6 +75,16 @@ confirmation rubric.
     only read — that decision changes the whole security seam. See
     `templates/ai-features/README.md`.
 
+11. **User profile and reporting depth**: is the user technical,
+    semi-technical, or non-technical (product/strategy/business)? What do
+    they want by default — decisions and business impact, or
+    implementation detail? Record it as {{USER_PROFILE}} in
+    `docs/PROCESS.md` § Communication contract. **Why this is asked
+    now**: the kit historically assumed a technical reader, so sessions
+    pasted column names, file:line references and type signatures into
+    the chat of owners who could not act on them — costly to read and
+    costly in tokens, while the evidence belonged in the artifact anyway.
+
 **Stack support**: if the user arrives WITHOUT a decided stack, walk the
 defaults table in `templates/docs/STACK-DEFAULTS.md` (15 decisions with
 deviate-when conditions) instead of asking open-ended. Every project,

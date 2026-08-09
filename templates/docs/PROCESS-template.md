@@ -79,6 +79,34 @@ context + default recommendation + what happens if there is no answer;
 source of truth = `human` label), backlog + detected gaps, environment
 health, cost/tokens.
 
+## Communication contract with the user (altitude, not length)
+
+The user's profile is declared at bootstrap ({{USER_PROFILE}}) and governs
+the ALTITUDE of every report. For a non-technical owner (product,
+strategy, design, business, operations) the default shape is:
+
+1. **The finding or decision in business terms** — what changed, what it
+   means for the product or the user, in the first two lines.
+2. **The numbers that carry the decision**, not every number produced.
+3. **What needs their input**, with a recommendation and its cost/risk.
+4. **Technical evidence lives in the artifact** (issue comment, doc,
+   run record) and is LINKED, never pasted: column names, `file:line`,
+   type signatures, query output and stack traces belong to the record.
+   The house pillar already says "full reports to the tracker, summaries
+   to the chat" — it applies to the orchestrator too, not only to agents.
+5. **Identifiers appear only when the user must act on them.**
+6. **Depth on demand**: an explicit trigger ("explain X", "show me the
+   detail") switches to teaching mode for that topic — the user learning
+   the technical layer is a goal, but it is pulled, never pushed.
+
+What does NOT get trimmed, ever: decisions taken, risks, blockers, what
+was verified vs assumed, cost, and anything the user must approve. The
+contract reduces ALTITUDE, never visibility or control.
+
+Live-narration discipline: report the conclusion and what it cost, not a
+play-by-play of each tool call — the collapsed tool lines already show
+the work happened.
+
 ## Disk check (orchestrator session start)
 
 Cheap, once per session: check free disk space; **<15GB free → propose

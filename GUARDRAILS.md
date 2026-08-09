@@ -311,3 +311,40 @@ as any checkpoint (a work block ends, context pressure, the user says
       push.
 - [ ] **Memory**: the machine-level `MEMORY.md` reflects the new state
       (modules, roles, markers, open threads).
+
+
+## 5. Session token economy (measured, not assumed)
+
+A real measurement of a long transversal session (`scripts/session-cost.sh`
+reproduces it on any transcript):
+
+| category | share |
+|---|---|
+| tool RESULTS | ~45% |
+| tool call INPUTS (scripts, file writes) | ~29% |
+| user messages + harness injections | ~9% |
+| **assistant prose to the user** | **~7%** |
+| images pasted into the conversation | ~7% |
+| thinking | ~4% |
+
+**The intuitive fix is the wrong one.** Shortening the messages the user
+reads attacks ~7% and costs visibility. Tool traffic is ~73% — the
+session's own behavior, invisible to the user. Levers in impact order:
+
+1. **Offload exploration to subagents.** A research/audit subagent burns
+   its own context and returns a summary — in a measured case, ~78k
+   tokens spent internally returned as ~4k. Any multi-file investigation,
+   codebase survey or "find out how X works" belongs there, not in the
+   main thread.
+2. **Read narrow.** Grep before read; read ranges, not whole files; never
+   re-read what you just wrote (the tool already confirmed it).
+3. **Fewer edit round-trips.** Each file touched re-enters context via
+   the harness; batch related edits into one pass instead of iterating.
+4. **Segment sessions by kind.** System/kit work and a project's sprint
+   are different sessions; a fresh session that reads MEMORY costs ~10k
+   instead of carrying hundreds of thousands.
+5. **Images are ~1.6k tokens each.** A carousel of ten costs ~16k — send
+   the decisive frames, describe the rest.
+
+Reporting altitude (the ~7%) is still worth fixing — for CLARITY, per the
+communication contract — but never sold as the token solution.
