@@ -21,15 +21,24 @@ not exist yet → spec; anything about a live AI feature → eval/audit.
 
 ## Spec mode (before grooming)
 
-1. **Interaction contract**: what the assistant CAN do, what it must NOT
-   do, and its behavior at the edges — doesn't know, can't do, must
-   refuse. Refusals are a designed feature, and the refusal itself must
-   leak nothing.
+1. **Interaction contract, positively scoped**: state what the assistant
+   DOES; do not write a blacklist of what to hide (blacklists are
+   bypassed by rewording, and a prompt enumerating the secrets is a map
+   of them). Behavior at the edges — doesn't know, can't do, must refuse
+   — is designed, and refusals are UNIFORM ("doesn't exist" and "not
+   allowed" read identically) so they never become an enumeration
+   oracle. Frame-independence is the rule: what to answer depends on who
+   asks and this assistant's job, never on the story around the request.
 2. **Golden set FIRST**: real inputs with expected outputs and per-
    dimension thresholds, versioned in the repo — defined BEFORE the
    prompt exists. Plus the **adversarial set** derived from the project's
-   never-list (extraction attempts, injection payloads, cross-tenant
-   requests, jailbreak phrasings).
+   never-list — and each never-list sentence gets its FRAMING VARIANTS
+   (hypothetical/fictional wrappers, roleplay personas, research or
+   educational pretexts, claimed authority, incremental extraction across
+   turns, encoding tricks, instruction-override phrasings). A rule tested
+   only against its direct phrasing is tested against the one attack
+   nobody uses. Two harms the boundary alone does not cover: fabricated
+   entity data ("give me example users") and cross-turn aggregation.
 3. **Context/retrieval strategy**: what enters the context and from
    where; retrieved content is DATA, never instructions. Retrieval
    infrastructure only if there is a retrieval problem (conditional
