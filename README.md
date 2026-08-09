@@ -59,12 +59,25 @@ mapping of where each one already runs, in each project's
 
 ## Improvement loop (this repo learns too)
 
-The kit is NOT static. Rule: at every Sprint Close of any project, if the
-retro produces a **project-agnostic** learning (about process, not stack),
-it is proposed here as a commit — so the next project starts with
+The kit is NOT static, and its learning is **not sprint-bound**. Two
+capture paths, both mandatory:
+
+1. **From a project's Sprint Close**: if the retro produces a
+   **project-agnostic** learning (about process, not stack), it is
+   proposed here as a commit — so the next project starts with
 everything learned in the previous ones. Context-specific learnings
 (hardware, stack, APIs) stay in their project's LEARNINGS.md, marked as
 non-portable.
+
+2. **From transversal sessions** (way-of-working work that is not a
+   sprint — building modules, fixing the kit, evaluating practices):
+   these produce learnings too, and historically they were the ones that
+   escaped capture, because no ritual demanded it. Every such session
+   appends its incidents to this repo's own `LEARNINGS.md` **at the
+   moment of the learning** (same "file it now" discipline as issues),
+   and closes with the transversal session-close checklist
+   (`GUARDRAILS.md` § 4). The kit's `LEARNINGS.md` holds the INCIDENT,
+   `PRINCIPLES.md` the distilled RULE, the ledger the EVIDENCE STATE.
 
 **Two-question rule (every evaluation, always)**: any practice/pattern/
 tool under consideration answers TWO questions SEPARATELY — (1) does the

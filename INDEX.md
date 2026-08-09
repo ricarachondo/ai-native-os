@@ -11,6 +11,7 @@
 |---|---|---|
 | `README.md` | Pillars, evidence states + validation ledger, improvement loop (two-question rule), credits | First contact with the kit; before any evaluation of a new practice |
 | `BOOTSTRAP.md` | Step-by-step project setup (9 question areas incl. design fork + security grill-me) | Starting a NEW project |
+| `LEARNINGS.md` | Kit-operations incidents (append-only): what happened, what it cost, root cause, what changed | After any incident operating the kit; before repeating a past mistake |
 | `PRINCIPLES.md` | 25 numbered principles with their originating incidents | Session start refresh; when a decision feels like re-litigating something |
 | `SPRINTS.md` | Sprint methodology detail + label taxonomy | Sprint planning/close |
 | `GUARDRAILS.md` | Session/context/spend limits, triggers-counters mechanism, effort-first lever, advisory pattern | Cost/limits questions; defining any new rule (counters) |

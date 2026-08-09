@@ -240,6 +240,15 @@ principles that govern it.)
     the change checklist. Transversal rules live in ONE place — a rule
     copied into N role files is a drift bug, not thoroughness.
 
+27. **[PORTABLE] Discipline is not a mechanism.** A rule that exists only
+    as a sentence someone must remember will eventually break — observed
+    across five independent incidents (`LEARNINGS.md`). When you write
+    "always remember to X", immediately ask what would CHECK X and what
+    that check costs; if nothing cheap exists, log the counter so the
+    third failure builds it. Converting a rule into a script, a gate, a
+    contract or a symlink is the only thing that has ever stopped one
+    from breaking again.
+
 ## Interaction with the user
 
 21. **[PORTABLE] Explicit status at the start of every turn**: which agent

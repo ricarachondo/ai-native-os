@@ -283,3 +283,31 @@ the threshold.*
 The typical trigger candidates (watchdog, nightly agents, RAG,
 computer-use) are listed with their status in `README.md` § Future
 territory — none validated yet.
+
+
+## 4. Transversal session close (way-of-working sessions)
+
+A session that improves the SYSTEM rather than shipping a project's
+sprint has no Sprint Close — which is exactly why its learnings used to
+escape (see `LEARNINGS.md`: the anonymization rule broke three times in
+sessions of this kind). Close them with this checklist, at the same cues
+as any checkpoint (a work block ends, context pressure, the user says
+"save"):
+
+- [ ] **Incidents → `LEARNINGS.md` of this repo**, appended at the moment
+      they happened: what happened · what it cost · root cause · what
+      changed · what was consciously NOT fixed.
+- [ ] **Distilled rules → `PRINCIPLES.md`**, only if the lesson
+      generalizes beyond its incident.
+- [ ] **Evidence states → the README ledger** (new pieces are ⏳ by
+      definition).
+- [ ] **Mechanism check**: for every rule written or touched this
+      session, ask what would CHECK it. If nothing cheap exists, log the
+      counter (§ 3) — the third failure earns the mechanism.
+- [ ] **Propagation**: kit pushed, and every project's `kit-sync` marker
+      bumped for what it actually adopted (an unbumped marker means the
+      next session re-reviews work already adopted).
+- [ ] **Anonymization**: `scripts/anonymize-check.sh` green before the
+      push.
+- [ ] **Memory**: the machine-level `MEMORY.md` reflects the new state
+      (modules, roles, markers, open threads).
