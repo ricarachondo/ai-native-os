@@ -36,6 +36,13 @@ the value is that n/a is DECLARED, never assumed.
       referenced not copied, registered in roles table + validation
       ledger, cues declared
 
+**AI features (prompt / context / model / tools)**
+- [ ] No AI surface touched — OR: golden set RUN (link the run record,
+      every dimension at or above its floor) · adversarial set RUN ·
+      prompt/context version recorded · cost-per-interaction still under
+      its ceiling. A prompt change without an eval run is a change
+      without a test.
+
 **Diagnosability**
 - [ ] If this change fails in production, the signals to see it exist:
       {log line / error tracking / metric — or why none is needed}

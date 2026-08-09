@@ -50,3 +50,16 @@ buckets) + updated trigger counters table. Ask the real "why" of each weak
 point — distinguish a planning failure from a correctly discovered scope
 boundary. Save the narrative in `docs/retros/`, learnings in
 `docs/LEARNINGS.md`, decisions in `docs/DECISIONS.md`.
+
+
+## AI features (when the project has an AI surface)
+
+- Mandatory grooming field already flags auth/sensitive/public surfaces;
+  an AI/conversational feature is ALWAYS one of them → `security-relevant`
+  at birth, and the AI Engineer's spec runs BEFORE your grooming (same
+  order as the Designer's brief — never groom an AI surface blind).
+- Your acceptance criteria for an AI feature reference the golden set's
+  dimensions and floors — "the assistant answers well" is not a criterion
+  until an eval defines it.
+- In acceptance review, reject a merge whose AI evals did not run (the
+  change-checklist item), exactly as you would reject missing tests.

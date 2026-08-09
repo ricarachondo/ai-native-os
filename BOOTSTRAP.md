@@ -62,6 +62,19 @@ confirmation rubric.
    retrofitted at the first auth issue is reactive by construction — the
    classification must exist BEFORE the first table with user data does.
 
+10. **AI surfaces**: will the product have conversational/AI features
+    (assistant, chat, agentic actions) or pipelines that depend on model
+    output — now or as a declared direction? If yes, the AI-features
+    module activates from day one: the AI Engineer role is installed, and
+    the FIRST such feature carries its golden set + adversarial set
+    before implementation. **Why this is asked now**: an AI feature
+    retrofitted with evals is an AI feature whose quality was never
+    measured — and in a source project a working eval harness was lost in
+    a migration precisely because no role owned it. Also record here
+    whether the assistant will be able to ACT (create/send/delete) or
+    only read — that decision changes the whole security seam. See
+    `templates/ai-features/README.md`.
+
 **Stack support**: if the user arrives WITHOUT a decided stack, walk the
 defaults table in `templates/docs/STACK-DEFAULTS.md` (15 decisions with
 deviate-when conditions) instead of asking open-ended. Every project,

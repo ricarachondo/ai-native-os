@@ -33,3 +33,20 @@ that do not reach the worktree, known stack flakiness).
    violations of the project's hard rules.
 7. Verdict on the issue (`gh issue comment`): PASS or FAIL with actionable
    detail per finding. Non-blocking findings are reported as such.
+
+
+## Verifying AI features (non-deterministic surfaces)
+
+An AI feature is NOT verified with asserts on one output — identical
+inputs may legitimately vary. Verify it the way it is specified:
+
+- Run the **golden set** and check every dimension against its declared
+  floor; report the numbers and the delta vs the previous run, not a
+  pass/fail feeling.
+- Run the **adversarial set**; any leak of real data is escalated as an
+  authorization finding (Security Engineer), not as a prompt bug.
+- Deterministic parts around the model (routing, tool contracts, error
+  handling, rate limits, refusal shape) ARE tested normally — the
+  non-determinism is the model's output, not the plumbing.
+- No eval run = the issue is not verifiable; report it as blocked, the
+  same as missing tests.

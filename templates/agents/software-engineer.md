@@ -58,3 +58,20 @@ replies with a short plan and you continue — the advisor does not take over
 your task. It is not for mechanical questions answerable by reading
 code/docs. Burning tens of thousands of tokens on a blocker without asking
 for advice is worse than asking early.
+
+
+## Implementing AI features
+
+- **Prior inventory applies here too**: before writing a prompt, list the
+  existing prompts/context builders/tools and declare what you reuse or
+  extend — duplicated divergent prompts are the same failure class as
+  duplicated components.
+- **Never change a prompt, context, model or tool set without running the
+  golden + adversarial sets** and attaching the run record to the issue
+  (change-checklist item). A prompt without an eval is a change without a
+  test.
+- The model runs with the CALLER's privileges — never wire an AI path to a
+  privileged service credential "for now"; that is the catastrophic
+  default of this space, and no prompt wording compensates for it.
+- Prompt/context is VERSIONED (hash or tag recorded with each run) so a
+  quality regression traces to a change.

@@ -131,6 +131,21 @@ expensive to retrofit later" is true — which is why the MINIMUM
 FIRST cue, not the second; the full pipeline (migrations, deploy gates)
 stays cue-driven. Owner: Platform Engineer proposes, the user approves.
 
+### 9 · AI surfaces (only if the product ships one)
+
+| Check | Priority | How |
+|---|---|---|
+| Adversarial eval set green | 🔴 | Every never-list rule × its framing variants passes; a DATA case that leaks is an authz bug, not a prompt fix. |
+| Golden set green, all dimensions at floor | 🔴 | Quality measured, not assumed — with the run record attached to the launch readiness doc. |
+| Model runs with CALLER privileges, tools scoped | 🔴 | The AI feature is never the authorization boundary; verify by asking the assistant for another user's resource. |
+| No secrets/architecture in the system prompt | 🔴 | Assume it leaks: extraction must be boring. And it must not ENUMERATE what to hide. |
+| Cost ceiling per interaction + provider-failure behavior configured | 🟡 | An open model endpoint is someone else's budget; a provider outage must degrade, not hang. |
+| Conversation logging/retention declared in the PII inventory | 🟡 | Including what leaves toward the model provider. |
+| Refusals uniform + no fabricated entities | 🟡 | Verified by the adversarial set's oracle-probe and fabrication-bait cases. |
+
+Owner: AI Engineer (evals, refusals, scope) with the Security Engineer
+(boundary items) and Platform Engineer (cost/latency/failure).
+
 ## Ownership (who runs what)
 
 | Section | Owner |

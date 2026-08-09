@@ -38,6 +38,7 @@
 | `templates/launch/README.md` | 8-section pre-launch checklist + gate ritual + conditional CI/CD chapter | Before ANY public launch; reliability audits |
 | `templates/quality/README.md` | Bug entity, change checklist, carry-over interest, optimization loop, diamond dispatch | Every merge (checklist); bugs; sprint planning (carry-over); any parallel dispatch (Stop Rule) |
 | `templates/ai-features/README.md` | AI/conversational surfaces in the PRODUCT: eval-before-prompt hard rule, the security seam (Security Engineer owns the boundary, AI Engineer the model surface), conditional retrieval chapter, LLM ops pointers | Any feature where users interact with a model, or a pipeline depends on model output |
+| `templates/ai-features/GOLDEN-SET-template.md` + `ADVERSARIAL-SET-template.md` | The two eval sets: quality (real inputs, per-dimension floors, run history) and security (never-list × framing variants) | Defining an AI feature — BEFORE writing its prompt |
 | `templates/quality/AUDIT-PLAYBOOK.md` | 12-dimension backward audit + regression pass + output contract + role ownership map | A1/A2 every Sprint Close; full sweep when functionally complete, BEFORE the launch gate |
 
 ## Recipes (implementation knowledge, stack-tagged)

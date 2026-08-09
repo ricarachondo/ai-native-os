@@ -144,6 +144,17 @@ Run the ones that apply to the stack. Each line is "look for X".
 - [ ] Per-user × per-event × per-channel preferences; sensible quiet
       defaults.
 
+### A13. AI features (only if the product has one)
+- [ ] Golden + adversarial sets still exist, still run, and their floors
+      were not quietly lowered (check the run history, not the config).
+- [ ] Quality drift: latest run vs the run at launch — same dimensions.
+- [ ] Real cost per interaction vs its declared ceiling.
+- [ ] Injection surface: what untrusted content reaches the model today
+      that did not at design time (new sources are new payload paths).
+- [ ] Every never-list rule added since the last audit has its framing
+      variants in the adversarial set.
+- [ ] Repeated refusals/scope hits are logged and someone has looked.
+
 ---
 
 ## Part B — Backward review (regression pass over past findings)
@@ -185,6 +196,7 @@ Every audit sweep produces:
 | Robustness, Perf, States (A3/A4/A7) | Periodic sweep + when touching the area |
 | A11y, UX, Onboarding, Animation, Mobile (A5/A6/A8/A9/A10) | Periodic UX sweep; each new surface at build time |
 | Logs/events/observability, Notifications (A11/A12) | Once as a foundation audit; then whenever a new domain event is added |
+| AI features (A13) | Every Sprint Close that touched an AI surface; full audit each periodic sweep |
 | Backward review (Part B) | Every periodic sweep |
 
 ## Ownership (role mapping — added when wiring into the role system)
@@ -197,6 +209,7 @@ The playbook names WHAT to audit; the role system names WHO:
 | A2 Test coverage | Tester |
 | A3 Robustness · A4 Performance · A11 Logs/observability | Platform Engineer (A4 indexes jointly with the Data Architect) |
 | A5 A11y · A6 UX friction · A7 States · A8 Onboarding · A9 Motion · A10 Mobile patterns | Designer (audit mode — these dimensions ARE its checklist, extended) |
+| A13 AI features | AI Engineer (evals, drift, injection surface) + Platform (cost) |
 | A12 Notifications mapping | PM (product mapping) + Platform Engineer (mechanism) |
 | Part B Backward review | Orchestrator collects; each owner re-verifies its own past findings |
 

@@ -51,6 +51,10 @@ unaddressed items (`CHANGE-CHECKLIST.md` has the full version):
 - **Docs sync**: database docs if schema changed · PII inventory if
   personal data changed · CONTROLS.md if a security practice changed —
   the existing hard rules converge here as one checklist.
+- **AI features**: any prompt/context/model/tool change runs the golden
+  AND adversarial sets, with the run record linked — the item that would
+  have caught a real lost-eval-harness regression (see the AI-features
+  module).
 - **Diagnosability**: does the change leave signals (logs, error
   tracking) to debug itself if it fails in production?
 
