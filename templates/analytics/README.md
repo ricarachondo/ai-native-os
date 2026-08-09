@@ -2,7 +2,7 @@
 
 > Self-contained module: the project's product-event taxonomy as a LIVING
 > contract with a named owner, so metrics stay trustworthy as the product
-> grows. Born from a project (dosi) whose core value IS event tracking —
+> grows. Born from a source project whose core value IS event tracking —
 > and whose competitive research proved the failure mode this module
 > prevents: the reference competitor derived video metrics from section
 > visibility time instead of emitting real events, producing contradictory
@@ -10,7 +10,7 @@
 > Generalizes audit dimensions A11/A12 of `../quality/AUDIT-PLAYBOOK.md`.
 >
 > **Validation status**: ⏳ specified from real evidence, first full run
-> pending (dosi is the first project to exercise it).
+> pending (that project is the first to exercise it).
 
 ## The living document (per project)
 

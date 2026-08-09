@@ -135,9 +135,9 @@ promoted from future territory into the body of the kit — never before.
 | Designer — spec mode | ✅ Validated (real briefs consumed by grooming) |
 | **Design pod** | ⏳ Specified, first-party validation pending — activation was never gated on it |
 | **Genesis mode** (design catalog flow) | ⏳ Specified, pending — every real project so far had a fixed system |
-| Data Architect role | ⏳ Specified (2026-07), first dispatch pending — **dosi (bootstrapped 2026-07-31) is the first project scheduled to exercise it** (event-heavy schema from reverse-engineering) |
-| Platform Engineer role / launch gate ritual | ⏳ Specified (2026-07), first launch pending — **dosi is the first project scheduled to exercise it** (email deliverability + video pipeline reliability are its core risks) |
-| Product-analytics module (`templates/analytics/`) | ⏳ Specified (2026-07-31) from real competitive evidence (dosi research); first full run pending — dosi is the evidence |
+| Data Architect role | ⏳ Specified (2026-07), first dispatch pending — **a newly bootstrapped source project is the first scheduled to exercise it** (a relationship-heavy schema derived from reverse-engineering a competitor) |
+| Platform Engineer role / launch gate ritual | ⏳ Specified (2026-07), first launch pending — **a newly bootstrapped source project is the first scheduled to exercise it** (email deliverability + media-pipeline reliability are its core risks) |
+| Product-analytics module (`templates/analytics/`) | ⏳ Specified (2026-07-31) from real competitive evidence (a source project's market research); first full run pending — that project is the evidence |
 | Security module docs (threat model, PII, controls) | ⏳ Instantiated in a real project; first full cycle under the new rules pending |
 | Bug template / change checklist / carry-over ledger | ⏳ Instantiated; first real sprint under them pending |
 | **Optimization loop** | ⏳ Externally evidenced (Anthropic's effective-harnesses engineering post reports the pattern working), first-party validation pending |
@@ -214,6 +214,14 @@ company ideas (see § Pillar).
 Contributions follow the same honesty rule as the kit itself: only
 practices validated in real projects, with the incident/evidence that
 motivated them.
+
+**Mechanical check before every push**: run
+`scripts/anonymize-check.sh` (generic leak shapes — personal paths,
+emails, deployment URLs, credential-shaped strings — plus your own
+private deny-list read from OUTSIDE the repo at
+`~/.config/ai-native-os/private-names.txt`, since the list itself would
+be a leak). The rule below was broken more than once by well-meaning
+sessions while it was discipline only; this is the mechanism.
 
 **Anonymization rule (non-negotiable)**: learnings promoted from private
 projects ALWAYS arrive translated to English and anonymized — identity out,
