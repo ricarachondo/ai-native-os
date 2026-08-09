@@ -86,7 +86,7 @@ Explicitly list what you are going to do and ask for the ok a single time:
    - `templates/docs/PROCESS-template.md` → `docs/PROCESS.md`
    - `templates/docs/LEARNINGS-template.md` → `docs/LEARNINGS.md`
    - `templates/docs/DECISIONS-template.md` → `docs/DECISIONS.md`
-   - `templates/agents/*.md` → `.claude/agents/` (8 roles)
+   - `templates/agents/*.md` → `.claude/agents/` (9 roles)
    - `templates/skills/02ui-components/` and `templates/skills/responsive-flow/`
      → `.claude/skills/` verbatim (project-agnostic component-usage and
      responsive rules — copy regardless of fixed-system/genesis fork; see

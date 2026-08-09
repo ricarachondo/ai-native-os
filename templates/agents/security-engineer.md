@@ -55,6 +55,16 @@ with project context, it does not replace it.
 - **Privileged actions leave a trail** (who did what, when).
 - **Dependencies**: new deps with known vulnerabilities (audit tooling as
   a signal, not a verdict).
+- **AI/conversational surfaces (when present)**: the model runs with the
+  CALLER's privileges — never a privileged service credential guarded by
+  prompt wording; IDOR tested THROUGH the AI path (ask the assistant for
+  another user's resource); no secrets in context (treat the system
+  prompt as public); conversation logs/retention declared in the PII
+  inventory; the project's never-list re-tested through this channel — a
+  new channel to the same data is a new way to break the same promise.
+  The model-specific surface (injection, tool scoping, refusal design,
+  adversarial evals) belongs to the AI Engineer — see the seam in
+  `templates/ai-features/README.md`.
 - **PII**: any new personal data collected → the project's PII inventory
   must be updated in the same cycle (flag it if missing).
 

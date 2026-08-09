@@ -201,6 +201,7 @@ requires the user's ok).
 | Designer | `.claude/agents/designer.md` | Two modes: triaged audit of existing UI + spec of new surfaces (grill-me → brief → IA) before grooming. See the full module in the kit's `templates/design/README.md` (fixed-system/genesis fork, design pod) |
 | Data Architect | `.claude/agents/data-architect.md` | Two modes, mirroring the Designer: triaged audit of the real data model vs `docs/database/` vs actual query patterns + spec of the data model for new features (data grill-me → proposal) before grooming. Only for NON-trivial data decisions — trivial schema changes stay with the SWE. Full module: the kit's `templates/docs/database/README.md` |
 | Platform Engineer | `.claude/agents/platform-engineer.md` | Two modes: standing reliability audit of the backend platform (timeouts, rate limits, background jobs, retries/idempotency, observability, email/DNS infra) + launch gate (executes its sections of the launch-readiness checklist). Audit/spec only — findings become issues the SWE builds. Full module: the kit's `templates/launch/README.md` |
+| AI Engineer | `.claude/agents/ai-engineer.md` | Two modes: spec of AI/conversational surfaces before grooming (interaction contract, golden set defined up front, context/tool scoping, budgets) + eval/audit (runs golden + adversarial sets, reports numbers, blocks regressions). Spec/eval only. Full module: the kit's `templates/ai-features/README.md` |
 | Security Engineer | `.claude/agents/security-engineer.md` | Gate on sensitive issues (auth/secrets/row-security/tokens/PII) and pre-promotions, plus on-demand audits. Fixed core checklist (secrets, server-side authz, IDOR, input validation, state-transition visibility) + the project's own frozen extension. Evidence-backed findings only — does not implement |
 
 ## Model and effort assignment — EVOLVING CHAPTER
@@ -276,6 +277,24 @@ Full module: the kit's `templates/quality/README.md`. Operational summary:
   docs sync, diagnosability. "n/a" is declared, never assumed.
 - **Carry-over**: see § Sprint end — age, PM decision framework, floor
   rule, pinned ledger.
+
+## AI features (conversational / model-dependent surfaces)
+
+Full module: the kit's `templates/ai-features/README.md`. Operational
+summary:
+- **Hard rule**: a prompt without an eval is a change without a test. The
+  golden set is defined BEFORE implementation and runs before any
+  prompt/context/model change merges.
+- **Grooming**: any conversational/AI feature is `security-relevant` by
+  default → both the Security Engineer and the AI Engineer gates fire.
+  The AI Engineer's spec runs BEFORE grooming (like the Designer's).
+- **Security seam**: the Security Engineer owns the authorization
+  boundary (caller privileges — the AI feature is NEVER the authz
+  boundary — no secrets in context, never-list re-tested through the
+  chat); the AI Engineer owns the model-specific surface (injection, tool
+  scoping, refusal design) and PROVES it with adversarial evals.
+- **Platform Engineer** owns the operational envelope (cost/latency
+  ceilings, provider-failure behavior, prompt versioning).
 
 ## Launch readiness (gate ritual)
 

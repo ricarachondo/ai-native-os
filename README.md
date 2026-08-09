@@ -55,7 +55,7 @@ mapping of where each one already runs, in each project's
 | `SPRINTS.md` | Detailed sprint methodology: planning, execution, close, retrospective, and the label taxonomy | Both |
 | `GUARDRAILS.md` | Precautions against limits: session/context, spend, and the triggers/counters mechanism | Both |
 | `INDEX.md` | Navigation map: what to read, when | Both |
-| `templates/` | Skeletons ready to copy and fill in: AGENTS.md, MEMORY.md, PROCESS.md, LEARNINGS.md, DECISIONS.md, 8 agent roles, design module, database-documentation module, launch-readiness module, security module, delivery-quality module, recipes (stack-tagged implementation playbooks) | The session |
+| `templates/` | Skeletons ready to copy and fill in: AGENTS.md, MEMORY.md, PROCESS.md, LEARNINGS.md, DECISIONS.md, 9 agent roles, design module, database-documentation module, launch-readiness module, security module, delivery-quality module, AI-features module, recipes (stack-tagged implementation playbooks) | The session |
 
 ## Improvement loop (this repo learns too)
 
@@ -150,6 +150,7 @@ promoted from future territory into the body of the kit — never before.
 | Audit playbook (12 dimensions + backward review) | ✅ Validated (distilled from real audits run end-to-end in a source project); role-ownership map ⏳ first run pending |
 | Recipe: auth-otp-supabase | ✅ Validated first-party (built + adversarial security gate + ~30 E2E scenarios in a source project); first REUSE by a second project pending |
 | Disk/artifact lifecycle policy | ✅ Validated first-party (real recovery: <5GB free → 16GB, with a reproducibility-verification gate executed live across 3 projects before any deletion) |
+| AI-features module + AI Engineer role | ⏳ Specified 2026-08; the eval-harness PATTERN it formalizes is ✅ first-party validated (a source project ran per-field scoring over a real batch — and lost it in a migration, which is why the role exists). First spec-mode dispatch pending |
 | Housekeeping script + skill packaging | ⏳ Script smoke-tested on the source machine (already surfaced findings the manual sweep missed); first full agent-driven run pending. The underlying procedure is the validated policy above |
 
 ⏳ never means blocked — it means "when you run it, you are the evidence:

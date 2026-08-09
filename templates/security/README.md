@@ -85,6 +85,18 @@ gap in the project's THREAT-MODEL (honesty first) and close it by degrees:
 3. **Always**: local dotfiles carry only what genuinely cannot move (and
    the threat model lists them as an accepted, visible risk).
 
+## AI/conversational surfaces (seam with the AI Engineer)
+
+A chat surface is a NEW CHANNEL to the same data, not a new authorization
+model — so the never-list applies verbatim and gets re-tested through it.
+The load-bearing rule: **the AI feature is never the authorization
+boundary** (the model runs with the caller's privileges; a privileged
+assistant guarded by prompt wording is this space's catastrophic
+default). Boundary items live in the Security Engineer's core; the
+model-specific surface (prompt injection, tool scoping, refusal design,
+adversarial evals) belongs to the AI Engineer. Full seam:
+`../ai-features/README.md` § Security of AI surfaces.
+
 ## Certification-readiness (ISO 27001 / SOC 2) — honest scope
 
 A certification is granted to an ORGANIZATION (an ISMS: policies, risk

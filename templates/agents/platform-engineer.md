@@ -46,7 +46,14 @@ expected one.
    you answer "what happened to job X".
 7. **Email/DNS infra** (when in scope): SPF/DKIM/DMARC state, sending
    subdomain isolation, certificate and redirect health.
-8. **Housekeeping** (machine/artifact hygiene, GUARDRAILS § 2b): run the
+8. **LLM ops** (when the product calls models): cost per user
+   interaction with a ceiling that alerts, latency budget, behavior when
+   the provider fails or rate-limits (degrade / queue / honest error —
+   never a silent hang), prompt+context versioning so a quality
+   regression traces to a change, and caching of repeated calls as a
+   declared decision. Quality itself belongs to the AI Engineer; you own
+   the operational envelope around it.
+9. **Housekeeping** (machine/artifact hygiene, GUARDRAILS § 2b): run the
    kit's `scripts/housekeeping.sh` and classify findings — dead runtime
    leftovers, stale worktrees, disposable builds, hibernation candidates.
    Report-only diagnosis; anything in the irrecoverable class goes through

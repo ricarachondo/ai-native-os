@@ -63,6 +63,22 @@ file, zero drift); external adopters copy and refresh on kit-sync review.
 A kit skill without a declared learning loop is incomplete by definition —
 static skills rot exactly like copied rules.
 
+## Known gaps in this contract's enforcement (registered, honest)
+
+- **Tool contracts are declarative, not verified**: a role declares its
+  `tools:`, but nothing checks it stayed inside them — enforcement is
+  instruction, not mechanism (same class as any comment-enforced
+  boundary). Mitigation today: audit roles get read-only tool sets where
+  the harness allows.
+- **Failure handling is uniform where it should be typed**: the
+  max-2-relaunch rule treats a truncated session, a wrong approach and a
+  blocked permission identically, when each deserves a different response
+  (resume / redirect / escalate). Improvement candidate, not yet built.
+- **Agent OUTPUT quality is unmeasured**: the metrics log captures cost,
+  not whether the deliverable was good — a mediocre spec and an excellent
+  one look identical in the data. The QA gates (Tester, acceptance
+  review) are the qualitative substitute today.
+
 ## Why this is enough (and what it does not cover)
 
 A new role created under this contract adopts, without any extra step:

@@ -37,6 +37,7 @@
 | `templates/security/README.md` | Threat model, PII inventory, controls map, hybrid authz checklist, credential handling | Security-touching issues; bootstrap question 9; certification questions |
 | `templates/launch/README.md` | 8-section pre-launch checklist + gate ritual + conditional CI/CD chapter | Before ANY public launch; reliability audits |
 | `templates/quality/README.md` | Bug entity, change checklist, carry-over interest, optimization loop, diamond dispatch | Every merge (checklist); bugs; sprint planning (carry-over); any parallel dispatch (Stop Rule) |
+| `templates/ai-features/README.md` | AI/conversational surfaces in the PRODUCT: eval-before-prompt hard rule, the security seam (Security Engineer owns the boundary, AI Engineer the model surface), conditional retrieval chapter, LLM ops pointers | Any feature where users interact with a model, or a pipeline depends on model output |
 | `templates/quality/AUDIT-PLAYBOOK.md` | 12-dimension backward audit + regression pass + output contract + role ownership map | A1/A2 every Sprint Close; full sweep when functionally complete, BEFORE the launch gate |
 
 ## Recipes (implementation knowledge, stack-tagged)
@@ -57,5 +58,6 @@ project that uses them and learns something (standard improvement loop).
 - New practice to evaluate? → two-question rule (README § Improvement loop).
 - Postponing debt? → carry-over framework + floor (quality § 3).
 - Metric-shaped goal? → optimization loop (quality § 4).
+- Building an AI/chat feature? → ai-features module (golden set BEFORE the prompt; the AI feature is never the authz boundary).
 - Disk full / cleaning up a paused project? → GUARDRAILS § 2b (verify reproducibility before deleting).
 - Executable diagnosis for the above → `scripts/housekeeping.sh` (report-only) + the housekeeping skill (`templates/skills/housekeeping/`).
