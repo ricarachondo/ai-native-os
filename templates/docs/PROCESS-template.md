@@ -107,6 +107,15 @@ Live-narration discipline: report the conclusion and what it cost, not a
 play-by-play of each tool call — the collapsed tool lines already show
 the work happened.
 
+## Role-defaults check (orchestrator session start)
+
+One command with the kit-sync and disk checks:
+`scripts/role-defaults-check.sh .` — proves the model+effort table is
+actually applied. A role without a declared model does not fall back to
+the table; it inherits the session's model, and "we have a policy" then
+looks identical to "everything runs on the strongest model". Red check →
+fix before dispatching anything.
+
 ## Disk check (orchestrator session start)
 
 Cheap, once per session: check free disk space; **<15GB free → propose

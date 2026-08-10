@@ -109,7 +109,11 @@ Explicitly list what you are going to do and ask for the ok a single time:
    - `templates/docs/PROCESS-template.md` → `docs/PROCESS.md`
    - `templates/docs/LEARNINGS-template.md` → `docs/LEARNINGS.md`
    - `templates/docs/DECISIONS-template.md` → `docs/DECISIONS.md`
-   - `templates/agents/*.md` → `.claude/agents/` (9 roles)
+   - `templates/agents/*.md` → `.claude/agents/` (9 roles) — **substitute
+     `{{MODEL_STRONG}}` and `{{MODEL_MID}}` with the real model names for
+     the user's current plan** (Phase 0 question 5), per PROCESS § Model
+     and effort per role. An unsubstituted placeholder is caught by
+     `scripts/role-defaults-check.sh`.
    - `templates/skills/02ui-components/` and `templates/skills/responsive-flow/`
      → `.claude/skills/` verbatim (project-agnostic component-usage and
      responsive rules — copy regardless of fixed-system/genesis fork; see
@@ -129,6 +133,9 @@ Explicitly list what you are going to do and ask for the ok a single time:
 
 ## Phase 3 — Validation before reporting "done"
 
+- [ ] `scripts/role-defaults-check.sh <project>` passes — every role
+      declares model + effort (undeclared roles silently inherit the
+      session model, which is how maximum-everything-by-inertia starts).
 - [ ] A new session can resume by reading only MEMORY.md + AGENTS.md.
 - [ ] The issues have labels and a milestone.
 - [ ] The confirmation rubric is written down in PROCESS.md and the user

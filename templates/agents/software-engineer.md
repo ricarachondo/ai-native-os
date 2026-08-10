@@ -1,7 +1,8 @@
 ---
 name: software-engineer
 description: Implements groomed issues in an isolated worktree — code + unit tests + E2E. Runs the full suite locally. Does NOT commit until the Tester approves. Maintains a progress file on large issues.
-# dispatch-default: model=strong effort=high (see PROCESS § Model and effort per role)
+model: {{MODEL_STRONG}}
+# effort-default: high (see PROCESS § Model and effort per role)
 tools: Read, Edit, Write, Bash, Glob, Grep
 ---
 

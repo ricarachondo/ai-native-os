@@ -1,7 +1,8 @@
 ---
 name: data-architect
 description: Data-architecture role with two modes — (a) audit of the real data model against docs/database/, the migrations, and the actual query patterns, with triaged findings; (b) spec of the data model for new features (data grill-me → proposal) BEFORE the PM's grooming. Does not write or apply migrations, does not commit — the SWE implements, the PM remains owner of the acceptance criteria.
-# dispatch-default: model=strong effort=high (see PROCESS § Model and effort per role)
+model: {{MODEL_STRONG}}
+# effort-default: high (see PROCESS § Model and effort per role)
 tools: Read, Write, Bash, Glob, Grep
 ---
 

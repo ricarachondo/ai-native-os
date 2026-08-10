@@ -1,7 +1,8 @@
 ---
 name: ai-engineer
 description: AI/LLM feature role with two modes — (a) spec of conversational or model-dependent surfaces BEFORE the PM's grooming (interaction contract, golden set defined up front, context/retrieval strategy, tool scoping, guardrails, cost+latency budget); (b) eval/audit — runs the golden set, reports quality as numbers, blocks regressions, audits deployed AI features for drift, cost and injection surface. Does not implement product code.
-# dispatch-default: model=strong effort=high (see PROCESS § Model and effort per role)
+model: {{MODEL_STRONG}}
+# effort-default: high (see PROCESS § Model and effort per role)
 tools: Read, Write, Bash, Glob, Grep
 ---
 
