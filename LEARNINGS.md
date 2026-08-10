@@ -132,3 +132,31 @@ a correct answer to the wrong question is indistinguishable from a wrong
 answer until someone challenges it. The user's challenge is the
 mechanism today; naming the question explicitly in the recommendation is
 the cheap improvement.
+
+
+## 2026-08 · A decision framework collapsed into "always use the strongest model"
+
+**What happened**: the model-and-effort chapter asked each dispatch to
+weigh blast-radius × automatic verifiability. An audit across three real
+projects found: one with all nine roles pinned to the strongest model and
+no effort declared anywhere, two with nothing declared at all (inheriting
+whatever the session used), and empty dispatch logs in all three.
+
+**What it cost**: a maximum-everything token profile chosen by nobody —
+the user hit 98% of a 5-hour usage window and asked why sessions were so
+expensive.
+
+**Root cause**: a rule that requires JUDGMENT AT EVERY USE, under time
+pressure, always collapses to the safest-looking option. Nobody is ever
+blamed for over-spending on quality; the token cost is invisible while a
+weak model's rework is visible. The framework was sound and unusable.
+
+**What changed**: the chapter became a DEFAULT TABLE — concrete model and
+effort per role, declared in each role file, judgment exercised once when
+writing the table. Downgrades made safe by three rules (escalate one tier
+on first failure, QA gates never downgrade, effort tuned before model).
+The table is explicitly a hypothesis until the dispatch log has ~20 rows.
+
+**Generalizable lesson** (beyond models): when a rule needs judgment at
+every use, it is a DEFAULT waiting to be written. Decide once, encode the
+decision in the artifact that runs, and keep the judgment for the review.

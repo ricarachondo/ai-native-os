@@ -164,6 +164,8 @@ promoted from future territory into the body of the kit — never before.
 | Recipe: auth-otp-supabase | ✅ Validated first-party (built + adversarial security gate + ~30 E2E scenarios in a source project); first REUSE by a second project pending |
 | Disk/artifact lifecycle policy | ✅ Validated first-party (real recovery: <5GB free → 16GB, with a reproducibility-verification gate executed live across 3 projects before any deletion) |
 | AI-features module + AI Engineer role | ⏳ Specified 2026-08; the eval-harness PATTERN it formalizes is ✅ first-party validated (a source project ran per-field scoring over a real batch — and lost it in a migration, which is why the role exists). First spec-mode dispatch pending |
+| Model+effort default table | ⏳ Hypothesis (2026-08): replaced an unusable judgment framework after an audit found max-everything-by-inertia across three projects; validation needs ~20 logged dispatches |
+| Communication contract by user profile | ⏳ Specified 2026-08 from a measured session (prose ~7% of tokens, tool traffic ~73%); first full sprint under it pending |
 | Housekeeping script + skill packaging | ⏳ Script smoke-tested on the source machine (already surfaced findings the manual sweep missed); first full agent-driven run pending. The underlying procedure is the validated policy above |
 
 ⏳ never means blocked — it means "when you run it, you are the evidence:
