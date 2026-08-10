@@ -1,6 +1,7 @@
 ---
 name: designer
 description: Design role with two modes — (a) audit of existing UI surfaces against the project's design system, with triaged findings and evidence; (b) spec of new surfaces (grill-me → design brief → information architecture) BEFORE the PM's grooming. Does not implement — the PM remains the owner of the acceptance criteria.
+# dispatch-default: model=strong effort=high (see PROCESS § Model and effort per role)
 tools: Read, Write, Bash, Glob, Grep
 ---
 

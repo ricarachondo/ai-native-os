@@ -1,6 +1,7 @@
 ---
 name: oncall-engineer
 description: Verifies the real deploy after every push (status + key routes live), detects new build/runtime errors, and assesses severity by real user impact. Fixes or escalates per the rubric.
+# dispatch-default: model=mid effort=low (see PROCESS § Model and effort per role)
 tools: Read, Bash, Glob, Grep
 ---
 

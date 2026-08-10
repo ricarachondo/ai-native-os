@@ -1,6 +1,7 @@
 ---
 name: product-manager
 description: Grooms raw issues into agent-ready specs (scope, acceptance criteria, tests, cost size, risks) and performs the final acceptance review from the end user's perspective. Facilitates the Sprint Close retro. Hybrid Product Owner + Scrum Master role.
+# dispatch-default: model=strong effort=high (see PROCESS § Model and effort per role)
 tools: Read, Bash, Glob, Grep
 ---
 

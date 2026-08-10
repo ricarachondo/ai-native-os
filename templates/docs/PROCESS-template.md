@@ -349,6 +349,45 @@ the dashboard from this file (model/effort mix per role over time, cost
 per issue trend, relaunch counts) — visualization is cheap once the data
 is structured; unstructured retro prose cannot be trended.
 
+## Model and effort per role — DEFAULTS, not a framework to interpret
+
+Why this is a table and not a decision rule: the previous version asked
+each dispatch to weigh blast-radius × verifiability. Under time pressure
+that judgment collapses to "use the strongest model" every time — nobody
+is ever blamed for over-spending on quality, and a weak model's cost
+(rework) is visible while the token cost is not. Result observed in a
+real project: every role pinned to the strongest model, no effort
+declared anywhere, zero measurements. That is not "no policy" — it is a
+maximum-everything policy chosen by inertia.
+
+The judgment happens ONCE, when this table is written. Then it just runs.
+
+| Role | Model | Effort | Why |
+|---|---|---|---|
+| PM (groom + acceptance) | strong | high | Product judgment; a bad spec costs the whole issue |
+| SWE — size M/L or schema | strong | high | Blast radius real even with tests |
+| SWE — size S / mechanical | mid | medium | High automatic verifiability (tests + Tester catch it) |
+| Tester | strong | medium | **QA gate — never downgraded**; execution is mechanical, reading failures is not |
+| On-Call | mid | low | Checklist against the real deploy, highest verifiability; escalate on ANY anomaly |
+| Designer · Data Architect · AI Engineer · Security | strong | high | Judgment-heavy, low automatic verifiability, expensive to undo |
+| Platform (audits) | strong | medium | Script-driven diagnosis, judgment in the triage |
+
+**Three rules that make downgrading safe** (the balance the user asked
+for — quality is not traded away, its cost is bounded):
+1. **Escalate on first failure**: a dispatch that fails or returns weak
+   output is relaunched one tier up. The downside of a cheap default is
+   one wasted dispatch, never a bad merge.
+2. **QA gates never downgrade**: Tester, security and acceptance keep
+   their tier regardless of what the executor used.
+3. **Effort is the first lever, before the model** — cheaper to tune and
+   reversible per dispatch.
+
+**Every dispatch records model + effort** in `docs/metrics/dispatches.csv`
+(PRINCIPLES #26 — a policy without its variables logged is unevaluable).
+This table is a HYPOTHESIS until that log has data: review it at the
+Sprint Close after ~20 recorded dispatches and adjust with evidence, not
+opinion.
+
 ## Token efficiency (effort, task budgets, advisory)
 
 See the kit's `GUARDRAILS.md` § "The first lever is effort" for the full

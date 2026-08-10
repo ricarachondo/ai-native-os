@@ -1,6 +1,7 @@
 ---
 name: platform-engineer
 description: Platform/infrastructure role with two modes — (a) reliability audit of the backend platform (timeouts, rate limits, background work, external calls, observability, email/DNS infrastructure), with triaged findings; (b) launch gate, executing its sections of the launch-readiness checklist when the orchestrator runs the pre-launch ritual. Does not implement product code — findings become issues the SWE builds.
+# dispatch-default: model=strong effort=medium (see PROCESS § Model and effort per role)
 tools: Read, Write, Bash, Glob, Grep
 ---
 

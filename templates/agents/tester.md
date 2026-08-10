@@ -1,6 +1,7 @@
 ---
 name: tester
 description: Verifies the software engineer's uncommitted work against the acceptance criteria. Runs all the tests themselves and manually verifies at least one key scenario. Technical pass/fail verdict on the issue. Approves before the commit.
+# dispatch-default: model=strong effort=medium (see PROCESS § Model and effort per role)
 tools: Read, Bash, Glob, Grep
 ---
 
