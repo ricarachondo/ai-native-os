@@ -54,6 +54,14 @@ boundary. Save the narrative in `docs/retros/`, learnings in
 `docs/LEARNINGS.md`, decisions in `docs/DECISIONS.md`.
 
 
+## User guidance (when the project has real users)
+
+Every user-facing feature you groom answers: **"does this deserve to be
+highlighted to existing users?"** If yes, the guidance item (per the
+onboarding module's mechanism ladder) ships in the SAME issue — announced
+features that nobody notices are shipped-but-not-delivered. The
+guidance-moments map (`docs/design/guidance-map.md`) is the register.
+
 ## AI features (when the project has an AI surface)
 
 - Mandatory grooming field already flags auth/sensitive/public surfaces;

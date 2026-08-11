@@ -100,6 +100,7 @@ provider" instead of a brand, "DB row security" for any backend.
 | Tested in the second browser (Safari↔Chrome), desktop + mobile | 🔴 | Forms, dates, and payments render differently. Every iPhone is Safari. |
 | Every link and button clicked | 🟡 | No dead ends, no `#` placeholders, no 404 in the footer. |
 | Forms abused: empty submit, wrong types, double-click | 🟡 | Helpful inline errors; submit disabled while running (double-click = double charge). |
+| First-run guidance decided | 🟢 | The guidance-moments map exists and each first-run workflow chose its mechanism (empty-state CTA vs highlight vs tour) — `templates/onboarding/README.md`. Deciding "none needed" is a valid outcome; not deciding is not. |
 | 404 page friendly and returning a real 404 status | 🟢 | httpstatus.io must say 404, not 200. |
 
 ### 8 · Processing reliability (OUR addition — not in the guide)

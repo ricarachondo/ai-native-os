@@ -165,6 +165,7 @@ promoted from future territory into the body of the kit — never before.
 | Disk/artifact lifecycle policy | ✅ Validated first-party (real recovery: <5GB free → 16GB, with a reproducibility-verification gate executed live across 3 projects before any deletion) |
 | AI-features module + AI Engineer role | ⏳ Specified 2026-08; the eval-harness PATTERN it formalizes is ✅ first-party validated (a source project ran per-field scoring over a real batch — and lost it in a migration, which is why the role exists). First spec-mode dispatch pending |
 | Model+effort default table | ⏳ Hypothesis (2026-08): replaced an unusable judgment framework after an audit found max-everything-by-inertia across three projects; validation needs ~20 logged dispatches |
+| Onboarding/product-tours module | ⏳ Specified 2026-08 (workflow-first process around driver.js); no project has real users yet — first activation pending |
 | Communication contract by user profile | ⏳ Specified 2026-08 from a measured session (prose ~7% of tokens, tool traffic ~73%); first full sprint under it pending |
 | Housekeeping script + skill packaging | ⏳ Script smoke-tested on the source machine (already surfaced findings the manual sweep missed); first full agent-driven run pending. The underlying procedure is the validated policy above |
 
@@ -217,6 +218,10 @@ company ideas (see § Pillar).
   already institutionalized here, and its Stop Rule ("where does the work
   split?") plus the generalized diamond shape were adopted with credit
   (`templates/quality/README.md` § 5, PRINCIPLES.md #24).
+- [driver.js](https://github.com/kamranahmedse/driver.js) (MIT) — the
+  onboarding module's default guidance library; its demo catalog
+  (animated/non-animated tours, highlight with popover, positioning)
+  serves as the mechanism-ladder reference.
 - Anthropic official documentation referenced throughout:
   the [effort parameter](https://platform.claude.com/docs/en/build-with-claude/effort),
   the [advisor tool](https://platform.claude.com/docs/en/agents-and-tools/tool-use/advisor-tool),

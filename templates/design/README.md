@@ -115,6 +115,16 @@ References (review before installing any library, as always):
 design exploration. On web stacks, drawer-style components (e.g.
 vaul-class) map the same pattern.
 
+## Guidance-moments map (spec-mode deliverable near launch)
+
+When the product has or nears real users, the Designer's spec mode also
+owns the **guidance-moments map** (`docs/design/guidance-map.md`): every
+user workflow × moment (first-run / new-feature / support) × the lowest
+mechanism that works (self-evident > empty-state CTA > highlight > tour >
+help overlay) × evidence × copy owner. Full module — ladder, hard UX
+guardrails, driver.js wrapper rules, mandatory instrumentation:
+`templates/onboarding/README.md`.
+
 ## Rules that integrate into the OTHER roles (not only the Designer)
 
 - **PM**: every UI issue is a vertical slice (buildable, reviewable and
