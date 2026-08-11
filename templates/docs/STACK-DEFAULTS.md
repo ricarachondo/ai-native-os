@@ -14,7 +14,7 @@
 | 2 | Database | **Relational (Postgres-family)** — strong consistency, row security | Your data is genuinely document/graph shaped AND scale justifies it |
 | 3 | Infrastructure | **Managed cloud** — buy undifferentiated ops | Compliance or cost AT REAL SCALE forces self-hosting |
 | 4 | Compute | **Serverless/zero-ops** — pay per use | Traffic patterns are sustained and predictable enough that containers win on cost/control — and know the platform limits either way (this kit's processing-reliability section) |
-| 5 | Build vs buy | **Buy anything that isn't your core product** (payments, auth, email, observability) | Only build what IS your differentiator |
+| 5 | Build vs buy | **Buy anything that isn't your core product** (payments, auth, email, observability). Applies at FEATURE level too: before hand-rolling a slider/parser/picker, the SWE walks the reuse ladder (internal → stack → library → custom) — see the SWE role template | Only build what IS your differentiator |
 | 6 | API style | **Simple resource-based (REST-ish)** — cacheable, well understood | Real client flexibility needs demand more (many heterogeneous consumers) |
 | 7 | Mobile | **Cross-platform, one codebase** | You need native-only capabilities or peak performance AND can afford ~2x the team |
 | 8 | Repos | **Monorepo** — one change touches everything atomically | Team size/independence forces a split |

@@ -30,6 +30,13 @@ the value is that n/a is DECLARED, never assumed.
 - [ ] Personal data touched → `docs/security/PII-INVENTORY.md` updated
 - [ ] Security practice touched → `docs/security/CONTROLS.md` updated
 
+**New dependencies (reuse ladder)**
+- [ ] No new dependency and no wheel reinvented — OR: the reuse ladder was
+      walked (internal → stack → library → custom) with the search
+      declared: {what was searched, what was found, why chosen/rejected}.
+      New library: license + maintenance + size noted; custom build: why
+      nothing solid existed.
+
 **New roles / pods / workflows**
 - [ ] None created — OR the birth contract is satisfied
       (`templates/agents/README.md`): sections present, transversal rules

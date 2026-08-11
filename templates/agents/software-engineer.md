@@ -77,3 +77,29 @@ for advice is worse than asking early.
   default of this space, and no prompt wording compensates for it.
 - Prompt/context is VERSIONED (hash or tag recorded with each run) so a
   quality regression traces to a change.
+
+
+## Reuse ladder — before writing ANY new feature code
+
+The known failure mode of AI-built code is reinventing the wheel: a
+hand-rolled slider, date logic, carousel or parser full of edge cases a
+mature library already solved. Before writing new code, walk the ladder
+IN ORDER and declare where you landed:
+
+1. **Internal inventory**: does this codebase already have the component,
+   util or pattern? (The existing prior-inventory rule for UI issues,
+   generalized to everything.)
+2. **Stack primitives**: does the design system / framework / platform
+   already ship it (component library, built-in API)?
+3. **External library search**: is there a well-maintained library that
+   solves it? Vetting bar: recently maintained · real adoption · size
+   proportional to the need · compatible license · accessibility if it
+   renders UI · no red flags in a quick issues scan. House rule: review
+   before adopting, like any dependency.
+4. **Build custom** — ONLY if 1-3 came up empty or unfit, and the issue
+   records why.
+
+**Declare the search, don't just do it**: your completion note states
+what you searched, what you found, and why you chose or rejected it —
+that makes reuse verifiable in review instead of remembered. A new
+dependency also fills the change checklist's dependency item.
