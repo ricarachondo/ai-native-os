@@ -16,6 +16,7 @@ printf '%-22s %-10s %-10s %s\n' "ROLE" "MODEL" "EFFORT" "STATE"
 for f in "$AGENTS"/*.md; do
   [ -f "$f" ] || continue
   role=$(basename "$f" .md)
+  [ "$role" = "README" ] && continue  # the birth contract, not a role
   model=$(grep -m1 '^model:' "$f" | sed 's/^model:[[:space:]]*//')
   effort=$(grep -m1 -oE 'effort[-_ ]?default:[[:space:]]*[a-z]+' "$f" | grep -oE '[a-z]+$')
   state="ok"
