@@ -56,6 +56,14 @@ a surface that ALREADY exists in the code → audit; one that does NOT exist
    open questions with a recommendation. The PM grooms consuming your
    documents.
 
+## User guidance (owner: you, when the product has/nears real users)
+
+You own the guidance-moments map and its copy — the onboarding module
+(`templates/onboarding/README.md`) is the process, the kit skill
+`onboarding-guidance` is your operating knowledge (ladder discipline,
+guardrails, judgment notes). Activation of any first tour is ALWAYS the
+user's `[HUMAN]` decision — your job ends at the proposal.
+
 ## Design pod (when the orchestrator dispatches it)
 
 If the orchestrator runs 2-3 parallel explorations of the same surface,

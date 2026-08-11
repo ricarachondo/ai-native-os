@@ -93,13 +93,30 @@ House rules for adopting it:
 | Event taxonomy + skip-rate visibility | Platform Engineer (analytics envelope) |
 | A11y verification (reduced-motion, keyboard, focus) | Designer audit checklist |
 
-## Activation cues (conditional module — pre-launch products skip it)
+## Activation: cues propose, the USER decides — hard `[HUMAN]` gate
 
-- The launch checklist's first-run item fires (guidance decided before
-  going public), OR
+The cues below produce a PROPOSAL to the user (workflow, mechanism,
+evidence, estimated size) — **never an activation. The user picks the
+first candidate and the timing, always.** Roles do not ship guidance
+because a cue fired.
+
+- The launch checklist's first-run item (guidance decided before going
+  public), OR
 - Real users + a recurring confusion signal: support questions about the
   same flow, or an analytics funnel drop at a step guidance could fix.
 
-Until a cue fires, the only standing obligation is the existing A8 rule
-(empty-states + new-feature CTAs) — this module adds the tour layer WHEN
-the evidence asks for it, not before.
+Until then, the only standing obligation is the existing A8 rule
+(empty-states + new-feature CTAs).
+
+## Ownership: the Designer, via a kit skill — deliberately NOT a new role
+
+Question answered (stated explicitly, per the house lesson): "does
+episodic guidance work in every project justify a standing role?" — No:
+guidance IS a UX discipline; the Designer already owns moments, copy and
+accessibility, and a dedicated onboarding role would duplicate it the
+same way a 'backend engineer' would have duplicated the SWE. The durable
+knowledge lives in the kit skill
+`templates/skills/onboarding-guidance/SKILL.md` (the Designer's operating
+knowledge: procedure, judgment notes, learning loop). Trigger to revisit
+(standard counters): guidance work in 3+ issues per sprint across 2+
+projects sustained — then a dedicated role earns its evaluation.
