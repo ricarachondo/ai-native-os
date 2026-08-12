@@ -75,6 +75,10 @@ Separate **observed** from **inferred**.
 - Inferred: the request pattern (single endpoint → stream) usually maps to a **RAG/agent chain**, not a multi-agent swarm. Present the probable orchestration and the tools; name the vector-index and LLM options as **possibilities**, not facts.
 - Implication: this class of system is reproducible with standard pieces; the expensive parts are curating the catalog and computing/maintaining any feature/vibe vector at index time (not per request).
 
+**Check the HTML before instrumenting the network.** SSR-with-hydration stacks embed the widget's data in the first response, so the initial render fires **zero** API calls — an interceptor waiting for requests finds nothing at all. Before instrumenting, `curl` the HTML anonymously and grep for the expected media domain or field names. Known payload homes: `<script type="application/json" id="wix-warmup-data">` (Wix Thunderbolt; widget data at `platform.ssrPropsUpdates[N][<compId>]`), `__NEXT_DATA__`, `window.__NUXT__`, `<script id="__astro">`, RSC flight payloads. Instrument the network *after* that — what you capture there is usually the pagination path, not the first load.
+
+**Measure signed-CDN URL expiry from the parameters; don't wait for it.** Signed media URLs carry their own deadline: on `cdninstagram.com`/`fbcdn.net`, `oe=<hex>` is the expiry epoch (`int(oe, 16)`) and `oh=` the signature. Parsing it yields the exact TTL without waiting — and can reveal cohorts no public documentation states (observed once: ~107 h for images vs ~32 h for videos on the same account). Then compare a cached render against a cache-busted one: if the server re-signs per render but `oe` is unchanged, re-rendering does **not** buy time — decisive for whether the user's product must re-host the media instead of hotlinking. Generalizes to any signed CDN (S3 presigned, Cloudflare signed URLs, Mux).
+
 ---
 
 ## 6. Cross-cutting lenses (treat as default, not optional)

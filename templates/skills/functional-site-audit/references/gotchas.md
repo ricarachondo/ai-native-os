@@ -14,6 +14,10 @@
 | SPA returns an empty shell | Read before JS render | Wait for networkidle; or use a JS-executing tool (get_page_text) |
 | `wait > 10s` / `scroll > 10` rejected | Chrome-MCP limits | Chain waits; setTimeout via javascript_tool; scroll in steps |
 | Playwright timeout on `.click()` | Element not stable / off-screen | `scroll_into_view_if_needed` + `click(force=True)`; or click by role/text |
+| You're reverse-engineering a widget's config from computed CSS | The whole config may travel in a layout endpoint's query string | Search the network for `layout`/`css`/`fixer` endpoints first — e.g. Wix Pro Gallery's `layoutCssNative?...&options=<entire config>` exposes every style param verbatim (layout, spacing, crop, arrows, info placement) |
+| Browser-pane screenshots come out blank | The pane is hidden (`The Browser pane is currently hidden`) | Move anything visual to Playwright; the pane still works for DOM queries via `javascript_tool` |
+| `BrowserType.launch: Executable doesn't exist at .../chromium_headless_shell-<v>` | Playwright version doesn't match the downloaded browsers | `p.chromium.launch(headless=True, channel="chrome")` to use the system Chrome — no browser reinstall needed |
+| `SyntaxError: Illegal return statement` in `javascript_tool` | It evaluates expressions, not function bodies | Wrap in an IIFE: `(()=>{ ... })()` |
 
 ## Per-engagement checklist
 
