@@ -247,7 +247,16 @@ principles that govern it.)
     that check costs; if nothing cheap exists, log the counter so the
     third failure builds it. Converting a rule into a script, a gate, a
     contract or a symlink is the only thing that has ever stopped one
-    from breaking again.
+    from breaking again. **Amendment (2026-08): a mechanism that has
+    never FIRED is still discipline.** A CI gate whose trigger did not
+    match the project's real workflow sat in a repo with zero runs in its
+    entire history while being cited as the fix for a previous failure —
+    and a gate that never triggers emits nothing, which reads exactly
+    like "nothing to report". Every gate, hook, check or scheduled job
+    declares the event that triggers it and is verified to have run at
+    least once against that event. The acceptance criterion is a
+    recorded green run, never a committed file: don't ask "is it
+    configured?", ask "show me it firing".
 
 ## Interaction with the user
 

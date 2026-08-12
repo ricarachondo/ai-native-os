@@ -227,3 +227,33 @@ gets the work email, the personal tree gets the personal one, and no
 repo depends on remembering a local override. The bootstrap's setup
 phase now verifies the commit identity matches the project's context
 before the first commit.
+
+## 2026-08 · A quality gate was declared, cited as the fix, and had never run once
+
+**What happened**: a project lost its eval harness in a repo migration and
+went eleven weeks measuring nothing (see the earlier entry). The fix
+rebuilt the harness AND added a CI workflow as the standing mechanism —
+the workflow was cited in the closing notes as what would keep the
+discipline from rotting again. A forensic check weeks later found the
+workflow had **zero runs in the repository's entire history**. Its
+trigger was `on: pull_request`, in a project whose own documented process
+says it does not use pull requests. The gate could never fire.
+
+**Why it stayed invisible**: a workflow that never triggers produces no
+output, and "no output" is indistinguishable from "nothing to check". It
+also passed every review that looked for whether the mechanism EXISTED.
+
+**Root cause**: the mechanism was designed against an assumed workflow
+rather than the project's actual one, and nobody asked the one question
+that would have caught it — *has it ever fired?*
+
+**What changed**: PRINCIPLES.md #27 said discipline is not a mechanism.
+The amendment: **a mechanism that has never fired is still discipline**.
+Every gate, hook, check or scheduled job declares — at creation — the
+event that triggers it and is verified to have RUN at least once against
+that event. "Green run recorded" is the acceptance criterion; "file
+committed" is not. The change checklist's diagnosability item now covers
+this: if the safeguard for this change is automated, link the run.
+
+**Generalizable**: when a fix's durability rests on automation, the
+review question is not "is it configured?" but "show me it firing."
