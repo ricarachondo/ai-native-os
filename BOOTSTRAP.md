@@ -124,7 +124,9 @@ Explicitly list what you are going to do and ask for the ok a single time:
    routines) — grant the platform's GitHub App access to the NEW repo at
    creation** (the app's scope is per-repository; a later 403 in a cloud
    agent means this step was skipped, and only the user can grant it in
-   the app's repository-access settings),
+   the app's repository-access settings — beware: providers install
+   SEVERAL apps, and the right one is the READ-AND-WRITE one, best
+   reached through the platform's own repo-selector UI),
    labels per the full taxonomy in `SPRINTS.md` § Labels (type, priority,
    process, area — the area ones are adapted to the project), milestones =
    sprints.

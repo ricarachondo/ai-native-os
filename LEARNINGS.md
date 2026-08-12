@@ -184,6 +184,11 @@ failure surfaces much later, as a cryptic 403 in a cloud agent.
 app access at repo creation (the mechanism), and the fix path is
 documented: the platform's GitHub App settings → repository access → add
 the repo; a later 403 in any cloud/scheduled agent means this step was
-skipped. Also recorded: the heartbeat pattern itself is first-party
+skipped. **Second layer of the trap, found when the user applied the
+fix**: providers install MULTIPLE apps (a read-only design/prototyping
+one and the read-write one that cloud agents use) — the user granted
+all-repos to the wrong app and the 403 persisted. Discriminator: the
+right app has WRITE access to code; the surest path to it is the
+platform's own repo-selector UI, which deep-links to the correct app. Also recorded: the heartbeat pattern itself is first-party
 evidence toward the watchdog future-territory item (scheduled resume is
 the simpler half of it — interruption DETECTION remains unbuilt).
