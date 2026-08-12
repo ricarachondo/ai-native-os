@@ -114,7 +114,11 @@ default; each has its adoption trigger under the counters meta-rule
   build-vs-buy default applies to it too. Trigger
   defined in the source project: 2 incidents within a 3-sprint window where
   no live process picks up the interruption and the user has to ask "what
-  happened?". At distillation time: 1/2 — not built.
+  happened?". At distillation time: 1/2 — not built. **Partial
+  first-party evidence (2026-08)**: one source project runs a scheduled
+  HEARTBEAT that resumes work when the usage window resets — the simpler
+  half of the watchdog (scheduled resume). Interruption DETECTION remains
+  unbuilt; the counter stands.
 - **Nightly agents / automatic memory synthesis** (dream-cycle style):
   first the proven manual memory ("memory before agent"), then the agent.
   Trigger defined in the source project: 3 occurrences of sources left

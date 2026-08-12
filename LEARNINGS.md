@@ -160,3 +160,30 @@ The table is explicitly a hypothesis until the dispatch log has ~20 rows.
 **Generalizable lesson** (beyond models): when a rule needs judgment at
 every use, it is a DEFAULT waiting to be written. Decide once, encode the
 decision in the artifact that runs, and keep the judgment for the review.
+
+
+---
+
+## 2026-08 · A project's scheduled resume was blocked by invisible per-repo app scope
+
+**What happened**: one project runs a "heartbeat" — a scheduled cloud
+agent that resumes work when the 5-hour usage window resets, without the
+user asking manually. A second project tried to replicate it and hit
+403 no-access on its repository, reported as "requires the user to grant
+access". Diagnosis confirmed the report was accurate AND incomplete: the
+repo exists, is private, and the user's own CLI credentials reach it
+fine — the 403 comes from the CLOUD-side GitHub App installation, which
+is scoped per-repository and only covered the first project.
+
+**Root cause**: granting the GitHub App access is an invisible,
+per-repository bootstrap dependency. Nothing in the project-creation flow
+mentions it, so every new repo is born outside the app's scope and the
+failure surfaces much later, as a cryptic 403 in a cloud agent.
+
+**What changed**: the bootstrap's GitHub step now includes granting the
+app access at repo creation (the mechanism), and the fix path is
+documented: the platform's GitHub App settings → repository access → add
+the repo; a later 403 in any cloud/scheduled agent means this step was
+skipped. Also recorded: the heartbeat pattern itself is first-party
+evidence toward the watchdog future-territory item (scheduled resume is
+the simpler half of it — interruption DETECTION remains unbuilt).

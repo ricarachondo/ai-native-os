@@ -120,6 +120,11 @@ Explicitly list what you are going to do and ask for the ok a single time:
      `templates/design/README.md` § Component-usage and responsive skills)
    - Create `docs/retros/` and `docs/workflows/README.md` (process index)
 2. GitHub: private repo, environment branch if applicable (e.g. `uat`),
+   **and — if the user runs cloud/scheduled sessions (heartbeats,
+   routines) — grant the platform's GitHub App access to the NEW repo at
+   creation** (the app's scope is per-repository; a later 403 in a cloud
+   agent means this step was skipped, and only the user can grant it in
+   the app's repository-access settings),
    labels per the full taxonomy in `SPRINTS.md` § Labels (type, priority,
    process, area — the area ones are adapted to the project), milestones =
    sprints.
