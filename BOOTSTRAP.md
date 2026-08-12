@@ -102,8 +102,13 @@ Explicitly list what you are going to do and ask for the ok a single time:
 
 ## Phase 2 — Setup (execute straight through)
 
-1. `git init` + copy and fill in the templates (the `{{PLACEHOLDERS}}` are
-   completed with the Phase 0 answers):
+1. `git init` — then, before the first commit, verify `git config
+   user.email` matches this project's context: on machines shared between
+   work and personal, the global fallback may point at the WRONG identity
+   and sign public history with it (see kit LEARNINGS). The mechanism is
+   directory-conditional identity (`includeIf "gitdir:"` per context
+   tree), not per-repo discipline. Then copy and fill in the templates
+   (the `{{PLACEHOLDERS}}` are completed with the Phase 0 answers):
    - `templates/AGENTS-template.md` → `AGENTS.md` (+ `CLAUDE.md` with `@AGENTS.md`)
    - `templates/MEMORY-template.md` → `MEMORY.md`
    - `templates/docs/PROCESS-template.md` → `docs/PROCESS.md`

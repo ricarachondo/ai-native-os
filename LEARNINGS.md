@@ -189,6 +189,41 @@ fix**: providers install MULTIPLE apps (a read-only design/prototyping
 one and the read-write one that cloud agents use) — the user granted
 all-repos to the wrong app and the 403 persisted. Discriminator: the
 right app has WRITE access to code; the surest path to it is the
-platform's own repo-selector UI, which deep-links to the correct app. Also recorded: the heartbeat pattern itself is first-party
+platform's own repo-selector UI, which deep-links to the correct app.
+**Third layer**: the user then browsed GitHub's installed-apps page and
+found ONLY the read-only app — the write-capable integration doesn't
+reliably appear there until it is installed through the platform's own
+flow, so hunting for it from GitHub's side is searching where it may not
+exist. The rule hardened into: manage cloud-agent repo access ONLY from
+the platform's own connector settings; GitHub's app list is for
+verification, not for performing the grant. Also recorded: the heartbeat pattern itself is first-party
 evidence toward the watchdog future-territory item (scheduled resume is
 the simpler half of it — interruption DETECTION remains unbuilt).
+
+## 2026-08 · Commits carried the wrong identity because git config is machine-global
+
+**What happened**: while investigating the app-scope 403, the user asked
+a sharper question — had the personal projects been connected to their
+WORK account? The access audit came back clean (every repo's collaborator
+list held only the personal account, and the local CLI was authenticated
+personally) — but it surfaced something else: seven commits in the kit's
+public repo were AUTHORED with the work account's noreply email. Cause:
+the machine is shared between work and personal contexts, and the GLOBAL
+`git config user.email` was set to the work identity; any repo without a
+local override silently inherited it. The per-repo overrides existed in
+the projects — but the kit repo got them late, after the signed commits
+were already public history.
+
+**Root cause**: identity-by-default on a shared machine. "Set the right
+email in each repo" is discipline; the global fallback is the mechanism,
+and it pointed at the wrong context. Authorship metadata is not access —
+nothing was reachable across accounts — but a public personal repo now
+permanently names the employer's account in its history, which is exactly
+the cross-context leakage the anonymization rule exists to prevent.
+
+**What changed**: the fix is directory-conditional git identity
+(`includeIf "gitdir:"` in the global config): the work directory tree
+gets the work email, the personal tree gets the personal one, and no
+repo depends on remembering a local override. The bootstrap's setup
+phase now verifies the commit identity matches the project's context
+before the first commit.
