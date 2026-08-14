@@ -125,6 +125,19 @@ simple change". In detail:
 - Issues with `[HUMAN]` criteria approved by agents: they ship, get the
   `human` label, a comment states what remains to verify, and they stay
   open for the user to close — without blocking the team.
+- **"Closed" must distinguish code-complete from behavior-verified.** The
+  same marker discipline applies to any criterion whose verification was
+  DEFERRED rather than performed: a run that costs money and was not
+  authorized, a real-usage batch not yet done, a device the team lacks.
+  The issue carries a visible label plus a line in the carry-over naming
+  which criteria are unverified and what unblocks them. Otherwise the
+  clause is invisible from outside — the issue reads `closed`, the
+  milestone counts a success, and the owner reasonably assumes the
+  behavior was checked. *Incident: six issues closed with code built,
+  tests green and security gates passed, while every criterion measuring
+  real model behavior waited on an unauthorized paid run; the owner's own
+  QA over 60+ real records then found a capability that its issue had
+  been closed on. Nothing about the work was wrong — the label was.*
 
 ### 2.3 QA at every stage (non-negotiable)
 
@@ -146,7 +159,19 @@ would have produced a false negative.*
 ## 3. Review / Close (Sprint Close)
 
 - **When**: when all the milestone's issues reach a terminal state (closed
-  or explicit carry-over), or when the user asks for it.
+  or explicit carry-over), or when the user asks for it. **Hard rule: the
+  close produces its artifacts BEFORE the next sprint's "go"** — retro
+  file written, milestone closed, carry-over ledger updated, counters
+  moved, metrics rows present. It is a precondition for starting, not a
+  closing step that can slip. Rationale: this ritual is the ONLY point
+  that audits global state, so when it stops running nothing reports its
+  absence — the auditor is what went missing. *Incident: it was skipped
+  for four consecutive sprints; in that window a deployment branch fell
+  190+ commits behind the main one with the sync step in the process
+  spec unexecuted, three milestones stayed `open` with zero open issues,
+  the debt ledger still reported an age of 2 sprints for items that were
+  6, and the dispatch metrics log held a single row. Each of those is a
+  check the close performs.*
 - **Who**: the PM (natural extension of its bookend role), with real data
   from the tracker (`gh issue list --milestone ... --state all`).
 - **Report format**:

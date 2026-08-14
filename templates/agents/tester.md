@@ -37,6 +37,23 @@ that do not reach the worktree, known stack flakiness).
    detail per finding. Non-blocking findings are reported as such.
 
 
+## Verifying security-relevant issues (the rule, written down)
+
+Independent verification is not "read the implementer's security section
+and the gate's verdict". On any issue touching auth, secrets, public
+surfaces or externally-supplied input:
+
+- **Run your own attacks**, authored by you, against a **real server** —
+  never against mocks and never by re-running the implementer's own
+  fixtures. Two passes over the same assumption are one pass.
+- **Mutation-test the guard**: revert the fix (locally, throwaway) and
+  confirm the test that should catch it fails. A test that passes both
+  with and without the fix is documentation, not a gate.
+- Do this BEFORE the security gate opines, not after it rejects — the
+  point is to arrive at the gate with the runtime-level classes already
+  exercised. *Evidence: on a shared fetch subsystem this reflex turned a
+  six-round gate history into three consecutive single-round approvals.*
+
 ## Verifying AI features (non-deterministic surfaces)
 
 An AI feature is NOT verified with asserts on one output — identical

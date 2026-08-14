@@ -48,7 +48,11 @@ Orchestrator files → PM groom → SWE builds → Tester verifies → PM accept
    `security` label at birth (see § Security).
 3. The SWE implements in an isolated worktree + tests. Issues >~3 files or
    with schema: sub-steps + `.tmp/progress-{issue}.md` kept updated. Does
-   NOT commit.
+   NOT commit. **The dispatch enumerates the issue's mandatory gates**
+   (specific E2E coverage, security gate, docs sync) instead of leaving
+   them implicit in the issue body — a requirement the prompt does not
+   name loses to the twelve acceptance criteria that are competing for
+   attention (PRINCIPLES #33).
 4. The Tester runs EVERYTHING independently (does not trust the SWE's
    report) and verifies every criterion. Reports pass/fail on the issue.
 5. PM acceptance review from the end user's perspective.
@@ -151,6 +155,11 @@ if the team is left blocked waiting for it.
 ## Sprint end (Sprint Close)
 
 Assembled by the PM when all the milestone's issues reach a terminal state.
+**Its artifacts are a precondition for the next sprint's "go"**, not a
+deferrable closing step: retro file, milestone closed, carry-over ledger
+updated, counters moved, metrics rows present. This is the only ritual
+that audits global state, so nothing reports it when it stops running
+(kit `SPRINTS.md` § 3).
 Format: Shipped / Not shipped / Carry-over / New backlog / Next sprint
 recommendation / **5 fixed-question retrospective** (detail of each one:
 the kit's `SPRINTS.md` § Retrospective):

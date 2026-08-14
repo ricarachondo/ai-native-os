@@ -45,9 +45,16 @@ unaddressed items (`CHANGE-CHECKLIST.md` has the full version):
   not faith.
 - **Contract/API breaking changes**: listed explicitly, consumers
   updated in the same cycle.
-- **Environment config**: new env vars set in ALL environments (a real
-  incident class: the feature works in one environment and silently
-  fails in another).
+- **Environment/infra config**: every new env var, platform setting or
+  manual infra step is VERIFIED against the real environment with the
+  output pasted — groomed is not applied, and the checklist question
+  "are they set everywhere?" gets answered from intent otherwise. Two
+  production incidents in one sprint came from this exact gap (an
+  approved protection never switched on; a provider secret never set,
+  confused with a similarly-named secret for a different mechanism).
+  Also verify the control covers the surface actually in use: a platform
+  protection's coverage can depend on plan tier or apply only to raw
+  deploy URLs and not the stable alias the product uses.
 - **Docs sync**: database docs if schema changed · PII inventory if
   personal data changed · CONTROLS.md if a security practice changed —
   the existing hard rules converge here as one checklist.
@@ -92,7 +99,11 @@ log; verify under {realistic conditions}"*.
    is recorded before experiment 1 — otherwise N experiments produce N
    opinions.
 2. The verification harness exists (e.g. a reproducible load test). The
-   harness is the real investment; the loop is the easy part.
+   harness is the real investment; the loop is the easy part. **And the
+   harness exercises the PRODUCTION path**, not a replica of it — an
+   instrument that measures something nobody ships produces phantom
+   regressions that cost real sprints to diagnose (see the AI-features
+   module § Evals for the incident and the rule).
 3. **QA gate intact**: no experiment "wins" if it breaks tests —
    correctness traded for performance is debt in disguise.
 

@@ -59,6 +59,21 @@ freezes judgment once, then verifies mechanically:
   in a source project (hand-computed HMAC on both sides, no vendor-SDK
   mock) and caught nothing false-positive only because it was done right
   — make it required, not incidental.*
+- **On any security-relevant surface, the tests run against a REAL server
+  and are MUTATION-TESTED from the first round** — not as an escalation
+  after the gate says no. Mocks and unit tests cannot exhibit the bug
+  classes that live in the runtime rather than in your code, so a gate
+  run against them certifies the mock. Mutation testing (revert the fix,
+  confirm the test that should catch it actually fails) is what separates
+  a test that guards the behavior from one that merely passes. *Evidence:
+  a shared server-side fetch subsystem took **six gate rounds**, each
+  finding something real the previous one missed (DNS rebinding/TOCTOU →
+  literal-IP bypass through a runtime shortcut → IPv4-mapped-IPv6 bypass
+  in dotted form → catastrophic-backtracking CPU DoS across six regexes
+  in two files → a crash on an invalid Unicode code point); the early
+  rounds ran on mocks. Once real-server + fuzzing + mutation testing
+  became the ENTRY bar, the next **three gates on the same subsystem were
+  single-round GO** — the improvement is measured, not declared.*
 - **Generative questions** (once per project, at bootstrap or first
   audit): multi-tenancy? inherited/derived permissions? capability tokens
   and their blast radius if leaked? state machines that flip visibility?

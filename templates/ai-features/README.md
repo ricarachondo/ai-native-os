@@ -192,6 +192,26 @@ periodic audit.
 - **LLM-as-judge is a tool with a bias**: usable for fuzzy criteria, never
   as the sole gate on the dimension you most care about, and its judge
   prompt is versioned like any other.
+- **QA the instrument before believing the number.** The harness must
+  call the SAME entry point production calls — not a prompt proxy, not a
+  reduced replica — and the scorer is code that can be wrong like any
+  other. *Evidence: three "regressions" in one sprint were all
+  measurement artifacts — a harness running a reduced prompt nobody
+  ships (0/5 FAIL where production was 3/3 PASS), a null-vs-sentinel
+  flip, and two scorer bugs, one of which moved a dimension **12 points**
+  once fixed. Rebuilding the harness against the real function was the
+  precondition for every quality issue that sprint.* Before opening a
+  regression investigation, verify the instrument.
+- **Persist the RAW output of every paid run**, not just the aggregate
+  score or the verdict. Scorer fixes then re-score history for free
+  instead of re-running the model: *the 12-point correction above was
+  recomputed from already-persisted output at $0.* Storage is
+  negligible; a paid run is not repeatable at the same price.
+- **A feature closed against evals is not a feature verified in real
+  use.** When acceptance criteria depend on a run that was not executed
+  (budget not authorized, real-usage batch not done), the issue carries
+  an explicit marker of which criteria are unverified and what unblocks
+  them — see `SPRINTS.md` § 2.2.
 
 ## Retrieval / RAG chapter (CONDITIONAL — only if the feature retrieves)
 

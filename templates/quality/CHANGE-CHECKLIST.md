@@ -22,8 +22,17 @@ the value is that n/a is DECLARED, never assumed.
 - [ ] No consumer-visible contract changed — OR breaking changes listed
       + every consumer updated in this cycle: {list}
 
-**Environment config**
-- [ ] No new env vars/config — OR set in ALL environments: {which, where}
+**Environment / infra config — VERIFIED, not declared**
+- [ ] No new env vars, platform setting or manual infra step — OR, for
+      each one: verification RUN against the real environment with the
+      output pasted here: {command/check + its actual output}
+- [ ] The control verified is the one that covers the surface actually
+      used (plan tier, aliases/custom domains, environment scope) — a
+      platform protection may not cover what you assume it does
+- [ ] Similarly-named secrets are not assumed to be the same mechanism:
+      {which secret, which mechanism, which repo/environment}
+> Groomed is not applied. This item is answered with evidence or an
+> explicit `n/a` — never from intent.
 
 **Docs sync (converged hard rules)**
 - [ ] Schema touched → `docs/database/` updated

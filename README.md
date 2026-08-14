@@ -147,16 +147,16 @@ promoted from future territory into the body of the kit — never before.
 |---|---|
 | Core cycle, PM/SWE/Tester/On-Call roles, memory files, sprint rituals, kit-sync protocol | ✅ Validated (2+ real sprints) |
 | Database-docs module | ✅ Validated (full real schema documented) |
-| Security Engineer gates | ✅ Validated (real sensitive issues gated) |
+| Security Engineer gates | ✅ Validated (real sensitive issues gated) — and the entry bar is now measured: after real-server + fuzzing + mutation testing became a first-round requirement, a subsystem with a six-round gate history produced three consecutive single-round approvals |
 | Designer — audit mode | ✅ Validated (real audits shipped fixes) |
 | Designer — spec mode | ✅ Validated (real briefs consumed by grooming) |
 | **Design pod** | ⏳ Specified, first-party validation pending — activation was never gated on it |
 | **Genesis mode** (design catalog flow) | ⏳ Specified, pending — every real project so far had a fixed system |
-| Data Architect role | ⏳ Specified (2026-07), first dispatch pending — **a newly bootstrapped source project is the first scheduled to exercise it** (a relationship-heavy schema derived from reverse-engineering a competitor) |
+| Data Architect role | ✅ Validated first-party (2026-08): first spec-mode dispatch produced ONE record-identity/dedup proposal resolving three issues that collided on the same key, before any implementer was dispatched — all three shipped without a schema collision |
 | Platform Engineer role / launch gate ritual | ⏳ Specified (2026-07), first launch pending — **a newly bootstrapped source project is the first scheduled to exercise it** (email deliverability + media-pipeline reliability are its core risks) |
 | Product-analytics module (`templates/analytics/`) | ⏳ Specified (2026-07-31) from real competitive evidence (a source project's market research); first full run pending — that project is the evidence |
 | Security module docs (threat model, PII, controls) | ⏳ Instantiated in a real project; first full cycle under the new rules pending |
-| Bug template / change checklist / carry-over ledger | ⏳ Instantiated; first real sprint under them pending |
+| Bug template / change checklist / carry-over ledger | ⏳ Instantiated; first real sprint under them exposed two gaps, both now fixed in the templates: the env-config item was answered from intent while two production incidents came from config never applied (it now demands a verification run with pasted output), and a ledger left un-updated for four sprints under-reported item age by 4 sprints |
 | **Optimization loop** | ⏳ Externally evidenced (Anthropic's effective-harnesses engineering post reports the pattern working), first-party validation pending |
 | CI/CD chapter (conditional) | ⏳ Specified with adoption cues; first-party adoption pending (a source project schedules it for a later phase) |
 | API-contract docs (conditional) | ⏳ Specified; no source project has external API consumers yet |
@@ -167,8 +167,8 @@ promoted from future territory into the body of the kit — never before.
 | Audit playbook (12 dimensions + backward review) | ✅ Validated (distilled from real audits run end-to-end in a source project); role-ownership map ⏳ first run pending |
 | Recipe: auth-otp-supabase | ✅ Validated first-party (built + adversarial security gate + ~30 E2E scenarios in a source project); first REUSE by a second project pending |
 | Disk/artifact lifecycle policy | ✅ Validated first-party (real recovery: <5GB free → 16GB, with a reproducibility-verification gate executed live across 3 projects before any deletion) |
-| AI-features module + AI Engineer role | ⏳ Specified 2026-08; the eval-harness PATTERN it formalizes is ✅ first-party validated (a source project ran per-field scoring over a real batch — and lost it in a migration, which is why the role exists). First spec-mode dispatch pending |
-| Model+effort default table | ⏳ Hypothesis (2026-08): replaced an unusable judgment framework after an audit found max-everything-by-inertia across three projects; validation needs ~20 logged dispatches |
+| AI-features module + AI Engineer role | ⏳ Eval-mode ✅ validated first-party (2026-08): the role rebuilt a harness that had been measuring a reduced prompt nobody shipped, re-froze the baseline against the production path, and found two scorer bugs — one worth 12 points on a dimension, recomputed from persisted raw output at $0. Three "regressions" that sprint were measurement artifacts. Spec-mode dispatch still pending |
+| Model+effort default table | ⏳ Hypothesis (2026-08), and **still unevaluated at its own scheduled review**: the table declared itself reviewable at the following sprint close with evidence; that close arrived with 1 row in the dispatch log and none from the month. The log is the blocker, not the table. Next close: rows ≥ dispatches, or the policy is retired rather than presented as measured (PRINCIPLES #26 amendment) |
 | Onboarding/product-tours module + guidance skill | ⏳ Specified 2026-08 (workflow-first process around driver.js; Designer-owned via the `onboarding-guidance` kit skill). Activation is a `[HUMAN]` gate — the user picks the first candidate; cues only propose |
 | Communication contract by user profile | ⏳ Specified 2026-08 from a measured session (prose ~7% of tokens, tool traffic ~73%); first full sprint under it pending |
 | Housekeeping script + skill packaging | ⏳ Script smoke-tested on the source machine (already surfaced findings the manual sweep missed); first full agent-driven run pending. The underlying procedure is the validated policy above |

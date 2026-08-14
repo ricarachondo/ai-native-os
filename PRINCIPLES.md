@@ -175,7 +175,16 @@ principles that govern it.)
     the tooling handed us outputs for free and nobody logged their own
     choices; the historical evaluation the user later asked for was
     impossible to produce, only approximable from the policy-in-force
-    dates in the decision log.*
+    dates in the decision log.* **Amendment (2026-08, second occurrence):
+    creating the measurement artifact is NOT the fix — the fix is the
+    mechanism that FILLS it.** The data contract from the incident above
+    was created, with its exact columns, and then nobody wrote to it: one
+    row total, none in the month the policy came up for review. So the
+    review that the policy itself scheduled arrived with nothing to
+    review. A policy therefore declares not only its columns but WHO
+    writes a row and AT WHICH step, and the sprint close either shows
+    rows ≥ dispatches or **retires the policy** rather than sustaining
+    the fiction that it is being measured.
 
 ## Cost and models
 
@@ -233,6 +242,20 @@ principles that govern it.)
     diamond (split → parallel explore → evaluate → merge with one
     synthesis owner); pod/research/parallel-issues are its instances.
     Detail: `templates/quality/README.md` § 5.
+33. **[PORTABLE] The dispatch RE-STATES the issue's mandatory gates — a
+    requirement that lives only in the issue body is a requirement the
+    executor will drop.** Every dispatch enumerates the verification
+    requirements the issue demands that are NOT part of the default cycle
+    (a specific E2E/browser-test coverage, a security gate, a docs sync)
+    — "follow the issue" is not an instruction. An executor prioritizes
+    what its own prompt names; inside a groomed issue, one such
+    requirement competes for attention with a dozen acceptance criteria.
+    *Evidence: an implementer shipped a UI phase without the five
+    scenarios the issue demanded in writing; the Tester caught it and the
+    gate worked, but the extra cycle was avoidable — the root cause was
+    the dispatch, not the implementer. Bucket: poor handoff.* Measurable
+    form: zero Tester rejections whose reason is "coverage the issue
+    required and the dispatch did not name".
 25. **[PORTABLE] Every new role/pod/workflow is born under the birth
     contract** (`templates/agents/README.md`): it inherits the
     transversal rules by REFERENCE (reads PROCESS.md and the applicable
@@ -256,7 +279,29 @@ principles that govern it.)
     declares the event that triggers it and is verified to have run at
     least once against that event. The acceptance criterion is a
     recorded green run, never a committed file: don't ask "is it
-    configured?", ask "show me it firing".
+    configured?", ask "show me it firing". **Second amendment (2026-08):
+    the rule extends past automation to any GROOMED MANUAL STEP — a
+    configuration that was specified and approved is not a configuration
+    that was applied, and nobody verifies the difference.** Two
+    production incidents in a single sprint came from exactly that gap: a
+    protection mechanism groomed, approved and never switched on (the
+    tool sat publicly reachable from its first real deploy), and a
+    provider secret never set in production while a similarly-named
+    secret, for a different mechanism in a different repo, was. The
+    checklist asked "are the env vars declared in all environments?" and
+    was answered from intent. It now asks for the verification RUN
+    against the real environment with its output pasted. **Third
+    amendment: rituals degrade in a specific order — the first to stop
+    running is the one that AUDITS the others**, and its absence is
+    silent by construction, because the thing that would have reported it
+    missing is itself. *Evidence: a close ritual that audits global state
+    (branch sync, milestones, counters, debt ledger, metrics) stopped
+    running for four sprints; in the meantime a deployment branch drifted
+    190+ commits behind, three milestones stayed open with zero open
+    issues, and the debt ledger kept reporting an age of 2 sprints for
+    items that were 6.* Anchor that ritual first, and make its artifact a
+    PRECONDITION for starting the next cycle rather than a closing step
+    that can be deferred.
 
 ## Interaction with the user
 

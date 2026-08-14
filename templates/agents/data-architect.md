@@ -58,6 +58,15 @@ PM, each with your recommendation.
 
 0. **State detection**: check `docs/database/proposals/` first; resume what
    exists, never recreate.
+0b. **Collision scan — one owner, ONE proposal**: before writing, list the
+   other open issues that touch the same entity, key or uniqueness rule.
+   If several collide on it, they are resolved in a SINGLE proposal
+   covering all of them, produced BEFORE any implementer is dispatched —
+   never one proposal per issue racing on the same key, and never
+   discovered at merge time. *Evidence: three issues in one sprint
+   converged on the same record-identity/dedup key; one proposal settled
+   it once and all three shipped without a schema collision.* This is the
+   diamond's "the merge has one owner" rule applied to data design.
 1. **Data grill-me**: interrogate every unresolved data decision — entities
    and their lifecycle, real cardinalities, what gets queried and how
    often, what must survive deletions, who may see/touch what, expected

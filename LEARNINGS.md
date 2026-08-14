@@ -294,3 +294,47 @@ walked straight past.
 that fact stays true. If the answer is "hours", it does not belong in a
 document — it belongs in a command. Documents hold what is durable;
 mechanisms hold what moves.
+
+---
+
+## 2026-08 · The ritual that audits the other rituals stopped running, and nothing reported it
+
+**What happened**: a project's deployment branch was found **190+ commits
+behind** the main one. Syncing it is an explicit, mandatory step in that
+project's own process spec, executed after every push; it had simply
+stopped being executed. The interesting question was not why it stopped —
+it was why no ritual caught it for months. The answer, verifiable in the
+repository: **the sprint close had not run in four consecutive sprints**.
+Retro documents existed up to sprint 5; sprints 6 through 9 produced
+none, three of their milestones were still `open` with zero open issues,
+the pinned debt ledger still reported an age of 2 sprints for items that
+were 6, and the per-dispatch metrics log held **one row, none from the
+current month**.
+
+**Why it stayed invisible**: the close is the ONLY point in the system
+that audits global state — branch sync, milestone hygiene, trigger
+counters, debt ageing, cost metrics. Every one of those checks lives
+inside the ritual that stopped. Its absence therefore produces no signal
+of any kind: the thing that would have reported "this was not done" is
+the thing that was not done. Rituals do not degrade uniformly; the
+auditing one degrades first (it is pure overhead in a busy sprint, and it
+is the only one with no downstream consumer to complain) and its
+degradation is the most expensive.
+
+**Compounding detail** — the metrics log is the same artifact from the
+earlier entry in this file ("A policy ran for five sprints without its
+own variables being logged"). That incident's fix was to CREATE the data
+contract; the contract was created and stayed empty, so the policy review
+it was built to enable arrived with nothing to review. Creating the
+artifact is not the fix; the mechanism that fills it is.
+
+**What changed**: the close's outputs became a **precondition for the
+next sprint's "go"** rather than a closing step that can slip (kit
+`SPRINTS.md` § 3, PROCESS template § Sprint end), and PRINCIPLES #27
+gained the third amendment: anchor the auditing ritual first, because
+nothing else will report its absence. #26 gained the amendment about
+contracts that nobody fills.
+
+**Generalizable**: when deciding which discipline to mechanize first,
+pick the one whose failure is silent. A ritual with a downstream consumer
+announces its own absence; an auditor has no consumer but the truth.
