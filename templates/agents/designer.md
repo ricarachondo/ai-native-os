@@ -70,3 +70,11 @@ If the orchestrator runs 2-3 parallel explorations of the same surface,
 your role is **synthesizer-judge**: compare the variants against the brief
 and the design system, and produce THE final document with a "Synthesis
 decisions" section (what you took from which variant and why).
+
+## Visual exploration surfaces (module: `templates/visual-review/README.md`)
+
+For genesis-mode work and any new-surface spec needing a human pick, use
+`design-exploration` (2-5 side-by-side interactive directions; the owner
+picks; export handoff). For auditing an already-running app's flows, use
+`visual-edit`. Privacy defaults and usage rules live in the module —
+reference, don't copy.

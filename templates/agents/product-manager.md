@@ -73,3 +73,12 @@ guidance-moments map (`docs/design/guidance-map.md`) is the register.
   until an eval defines it.
 - In acceptance review, reject a merge whose AI evals did not run (the
   change-checklist item), exactly as you would reject missing tests.
+
+## Visual review surfaces (module: `templates/visual-review/README.md`)
+
+When a gate's reviewer is the human owner and the decision has structure
+worth visualizing, serve it as a visual surface instead of a text wall:
+`visual-plan` for L-size/architecture groomings and migration plans,
+`visual-recap` for acceptance reviews and sprint closes. The module carries
+the hard rules (privacy defaults, when NOT to, demotion cue) — reference
+it, don't restate it. A 3-line fix never gets a visual plan.

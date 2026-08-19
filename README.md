@@ -172,6 +172,7 @@ promoted from future territory into the body of the kit — never before.
 | Onboarding/product-tours module + guidance skill | ⏳ Specified 2026-08 (workflow-first process around driver.js; Designer-owned via the `onboarding-guidance` kit skill). Activation is a `[HUMAN]` gate — the user picks the first candidate; cues only propose |
 | Communication contract by user profile | ⏳ Specified 2026-08 from a measured session (prose ~7% of tokens, tool traffic ~73%); first full sprint under it pending |
 | Housekeeping script + skill packaging | ⏳ Script smoke-tested on the source machine (already surfaced findings the manual sweep missed); first full agent-driven run pending. The underlying procedure is the validated policy above |
+| Visual review surfaces (`templates/visual-review/`) | ⏳ Specified 2026-08 (external Agent-Native skills adopted by reference for the [HUMAN] gates). Validation: one grooming served as a visual plan whose owner comments changed it + one acceptance as a visual recap. Demotion cue: three consecutive uncommented plans → back to text for that gate class |
 
 ⏳ never means blocked — it means "when you run it, you are the evidence:
 report back and the row flips".
